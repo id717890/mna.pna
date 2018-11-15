@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdku_reader>
+	<sikn_trends>
+		<sikn caption="СИКН 113" tag="AK.SIBNP.R_Uraj.SIKN_113">
+			<parameters>
+				<param caption="Давление нефти, МПа (2ч)">H2.Pout</param>
+				<param caption="Масса брутто, т (2ч)">H2.Qmom</param>
+				<param caption="Массовая доля воды, %">H2.WaterOil</param>
+				<param caption="Масса нетто нефти, т за 2ч">Akt.Smena_1.QOilNetto</param>
+				<param caption="Масса нетто нефти, т за 2ч">Akt.Smena_2.QOilNetto</param>
+				<param caption="Объем нефти в условиях измерения, м3 за 2ч">H2.Vmom</param>				
+				<param caption="Плотность нефти в рабочих условиях, кг/м3, 2ч">H2.Ro</param>				
+				<param caption="Плотность нефти приведенная к 15°С, кг/м3">H2.Ro15</param>				
+				<param caption="Плотность нефти приведенная к 20°С, кг/м3">H2.RoNom</param>
+			</parameters>
+		</sikn>
+		<sikn caption="СИКН 530" tag="AK.SIBNP.R_Uraj.SIKN_530">
+			<parameters>
+				<param caption="Давление нефти, МПа (2ч)">H2.Pout</param>
+				<param caption="Давление нефти BIK, МПа (2ч)">H2.BIK.Pout</param>
+				<param caption="Масса брутто, т (2ч)">H2.QOilBrutto1</param>
+				<param caption="Массовая доля воды, %">H2.WaterOil</param>
+				<param caption="Объем нефти в условиях измерения, м3 за 2ч">H2.Vmom</param>				
+				<param caption="Плотность нефти в рабочих условиях, кг/м3, 2ч">H2.Ro</param>
+			</parameters>
+		</sikn>
+	</sikn_trends>
+</sdku_reader>

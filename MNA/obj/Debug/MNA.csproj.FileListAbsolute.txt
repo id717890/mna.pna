@@ -1,0 +1,11 @@
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\MNA.exe.config
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\MNA.exe
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\MNA.pdb
+D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.csprojResolveAssemblyReference.cache
+D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.MNA.resources
+D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.Properties.Resources.resources
+D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.csproj.GenerateResource.Cache
+D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.exe
+D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.pdb
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\EPPlus.dll
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\EPPlus.xml
