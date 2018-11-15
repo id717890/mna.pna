@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace MNA
 {
-    class MnaPresenter
+    public class CompositeModule : NinjectModule
     {
-        private IMnaView _view;
-
-        public MnaPresenter(IMnaView view)
+        public override void Load()
         {
-            _view = view;
+            //Bind<>
         }
     }
 }

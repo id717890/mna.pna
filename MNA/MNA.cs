@@ -24,6 +24,7 @@ namespace MNA
         public int MnaNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int ExcelColumnCaption { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int ExcelColumnTag { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private IMnaPresenter Presenter;
 
         public bool IsInit()
         {

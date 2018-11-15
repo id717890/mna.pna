@@ -9,3 +9,8 @@ D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.exe
 D:\_dev\prj\MNA\MNA\MNA\obj\Debug\MNA.pdb
 D:\_dev\prj\MNA\MNA\MNA\bin\Debug\EPPlus.dll
 D:\_dev\prj\MNA\MNA\MNA\bin\Debug\EPPlus.xml
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\Ninject.dll
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\nunit.framework.dll
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\Ninject.xml
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\nunit.framework.pdb
+D:\_dev\prj\MNA\MNA\MNA\bin\Debug\nunit.framework.xml

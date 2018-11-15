@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,11 @@ namespace MNA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MNA());
+            CompositionRoot.Wire(new CompositeModule());
+            //var kernel = new StandardKernel(new MyInjectModule());
+
+            Application.Run(CompositionRoot.Resolve<MNA>());
+            //Application.Run(new MNA());
         }
     }
 }

@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace MNA
 {
-    class MnaPresenter
+    interface IMnaPresenter
     {
-        private IMnaView _view;
-
-        public MnaPresenter(IMnaView view)
-        {
-            _view = view;
-        }
     }
 }
