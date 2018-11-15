@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,11 +18,18 @@ namespace MNA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            var kernel = new StandardKernel();
+
+            CompositionRoot.Init(kernel);
+            kernel.Load(Assembly.GetExecutingAssembly());
+
             CompositionRoot.Wire(new CompositeModule());
             //var kernel = new StandardKernel(new MyInjectModule());
 
+            //Application.Run(CompositionRoot.Resolve<MNA>());
+            //Application.Run(CompositionRoot.Resolve<MNA>());
             Application.Run(CompositionRoot.Resolve<MNA>());
-            //Application.Run(new MNA());
         }
     }
 }

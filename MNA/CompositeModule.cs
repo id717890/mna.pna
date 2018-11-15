@@ -11,7 +11,11 @@ namespace MNA
     {
         public override void Load()
         {
-            //Bind<>
+            Bind<IMnaPresenter>().To<MnaPresenter>();
+            Bind<IMnaView>().To<MNA>();
+            //Bind(typeof(IMnaView)).To(typeof(MNA));
+            //Bind(typeof(IMnaPresenter)).To(typeof(MnaPresenter));
+            Bind<MNA>().ToSelf();
         }
     }
 }

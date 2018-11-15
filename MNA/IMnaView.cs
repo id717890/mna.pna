@@ -1,6 +1,6 @@
 ﻿namespace MNA
 {
-    interface IMnaView
+    public interface IMnaView
     {
         //IMnaPresenter Presenter { get; set; }
 

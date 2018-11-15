@@ -17,6 +17,8 @@ namespace MNA
 {
     public partial class MNA : Form, IMnaView
     {
+        private IMnaPresenter _presenter;
+
         const string cfg_file = "\\configs\\mna_service.xml";
         private static bool _isInit = false;
         private static IList<Mna> _mnaList;
@@ -24,7 +26,6 @@ namespace MNA
         public int MnaNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int ExcelColumnCaption { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int ExcelColumnTag { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        private IMnaPresenter Presenter;
 
         public bool IsInit()
         {
@@ -36,14 +37,26 @@ namespace MNA
             return _mnaList;
         }
 
-
-        public MNA()
+        public MNA(IMnaPresenter presenter)
         {
+
+
+            //_presenter = CompositionRoot.Resolve<IMnaPresenter>();
+            //_presenter = new MnaPresenter();
+            _presenter = presenter;
+            _presenter.View = this;
             InitializeComponent();
             ReadConfig();
             InitDataGrid();
             if (lbMnaList.Items.Count > 0) lbMnaList.SelectedIndex = 0;
+            //_presenter = CompositionRoot.Resolve<IMnaPresenter>();
+
         }
+
+        //public MNA()
+        //{
+        //    _presenter = presenter;
+        //}
 
         private void InitDataGrid()
         {

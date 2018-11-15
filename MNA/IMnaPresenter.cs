@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MNA
 {
-    interface IMnaPresenter
+    public interface IMnaPresenter
     {
+        MNA View { set; }
     }
 }

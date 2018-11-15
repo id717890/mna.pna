@@ -17,6 +17,11 @@ namespace MNA
             _ninjectKernel = new StandardKernel(module);
         }
 
+        public static void Init(IKernel kernel)
+        {
+            _ninjectKernel = kernel;
+        }
+
         public static T Resolve<T>()
         {
             return _ninjectKernel.Get<T>();

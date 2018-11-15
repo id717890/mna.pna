@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace MNA
 {
-    class MnaPresenter
+    public class MnaPresenter: IMnaPresenter
     {
         private IMnaView _view;
 
-        public MnaPresenter(IMnaView view)
-        {
-            _view = view;
-        }
+        public MNA View { set => _view = value; }
     }
 }
