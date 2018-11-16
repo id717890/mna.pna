@@ -1,6 +1,6 @@
 ﻿namespace MNA.Interfaces
 {
-    public interface IMnaPresenterNew: IPresenter
+    public interface IMnaPresenter: IPresenter
     {
         void ReadConfig();
         void SetCurrentMna(Data.Mna mna);

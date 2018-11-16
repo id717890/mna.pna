@@ -1,9 +1,8 @@
 ﻿using MNA.Data;
-using System;
 
 namespace MNA.Interfaces
 {
-    public interface IMnaPresenterCallbacks
+    public interface IMnaPresenterCallback
     {
         void OnSave();
         void OnMyTextChanged();

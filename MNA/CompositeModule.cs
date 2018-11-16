@@ -1,10 +1,4 @@
 ﻿using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MNA.Impl;
 using MNA.Interfaces;
 using MNA.Models;
 
@@ -15,7 +9,7 @@ namespace MNA
         public override void Load()
         {
 
-            Bind<IMnaPresenterNew>().To<MnaPresenterNew>();
+            Bind<IMnaPresenter>().To<MnaPresenterNew>();
             Bind<IMnaViewNew>().To<MNA>();
             Bind<IMnaViewModel>().To<MnaViewModel>();
 

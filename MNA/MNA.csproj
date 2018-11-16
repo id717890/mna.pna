@@ -65,11 +65,9 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Data\Mna.cs" />
     <Compile Include="Data\Tag.cs" />
-    <Compile Include="IMnaPresenter.cs" />
-    <Compile Include="IMnaView.cs" />
-    <Compile Include="Impl\MnaPresenterNew.cs" />
-    <Compile Include="Interfaces\IMnaPresenterCallbacks.cs" />
-    <Compile Include="Interfaces\IMnaPresenterNew.cs" />
+    <Compile Include="MnaPresenter.cs" />
+    <Compile Include="Interfaces\IMnaPresenterCallback.cs" />
+    <Compile Include="Interfaces\IMnaPresenter.cs" />
     <Compile Include="Interfaces\IMnaViewModel.cs" />
     <Compile Include="Interfaces\IMnaViewNew.cs" />
     <Compile Include="Interfaces\IPresenter.cs" />
@@ -80,7 +78,6 @@
     <Compile Include="MNA.Designer.cs">
       <DependentUpon>MNA.cs</DependentUpon>
     </Compile>
-    <Compile Include="MnaPresenter.cs" />
     <Compile Include="Models\MnaViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

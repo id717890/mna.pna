@@ -1,9 +1,5 @@
 ﻿using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MNA.Interfaces;
 
@@ -31,7 +27,7 @@ namespace MNA
             //Application.Run(CompositionRoot.Resolve<MNA>());
             //Application.Run(CompositionRoot.Resolve<MNA>());
             //Application.Run(CompositionRoot.Resolve<MNA>());
-            var presenter = CompositionRoot.Resolve<IMnaPresenterNew>();
+            var presenter = CompositionRoot.Resolve<IMnaPresenter>();
             presenter.Initialize();
             Application.Run((Form)presenter.Ui);
         }
