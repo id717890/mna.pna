@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdku_reader>
+	<to_mna>
+		<mna caption="НПС Ягодное - МНА №1" tag="AK.SIBNP.R_Uraj.NPS_Jagod.MNA_{0}" position="1">
+			<ts_security>
+				<ts caption="Сработала агрегатная защита 'Электрическая защита'">AlmHeap.AlarmStopEZ</ts>
+				<ts caption="Сработала агрегатная защита 'Повышенная температура'">AlmT.AlarmT</ts>
+				<ts caption="Сработала агрегатная защита 'Неисправность подпорных вентиляторов'">AlmHeap.NeisVentPodp</ts>
+				<ts caption="Сработала агрегатная защита 'Неисправность МВ'">AlmHeap.AlarmSUMV</ts>
+				<ts caption="Сработала агрегатная защита 'Невыполнение команды пуска/останова'">AlmHeap.AlarmPROG</ts>
+				<ts caption="Сработала агрегатная защита 'Минимальное давлнение охлаждающей воды'">AlmPress.AlarmMinPWater</ts>
+				<ts caption="Сработала агрегатная защита 'Минимальное давление масла'">AlmPress.AlarmMinPLubr</ts>
+				<ts caption="Сработала агрегатная защита 'Минимальное давление воздуха в корпусе э/д'">AlmPress.AlarmMinPAir</ts>
+				<ts caption="Сработала агрегатная защита 'Максимальные утечки торцевых уплотнений'">AlmLeak.AlarmLeak</ts>
+				<ts caption="Сработала агрегатная защита 'Изменение положения входной задвижки'">AlmHeap.AlarmStatusSW</ts>
+				<ts caption="Сработала агрегатная защита 'Аварийное отключение агрегата кнопкой 'Стоп' с БРУ'">AlmHeap.AlarmStopBRU</ts>
+				<ts caption="Сработала агрегатная защита 'Аварийное отключение агрегата кнопкой 'Стоп' по месту'">AlmHeap.AlarmStop</ts>
+				<ts caption="Сработала агрегатная защита 'Аварийная вибрация'">AlmVibr.AlarmMaxVibr</ts>
+			</ts_security>
+			<ts_other>
+				<ts caption="РДП Урай. СГП. НПС Ягодное МНА №{0} Остановлен ">OFF</ts>
+				<ts caption="стоп Исходящая квитанция ">TU.OFF</ts>
+				<ts caption="пуск Исходящая квитанция ">TU.ON</ts>
+				<ts caption="в работе ">ON</ts>
+				<ts caption="Ремонт  ">Rem</ts>
+				<ts caption="Резерв  ">Rez</ts>
+				<ts caption="Идет программа пуска ">Prog</ts>
+				<ts caption="Готов к дистанционному управлению">StatusContrl.Wait</ts>
+				<ts caption="Задвижка 2 Режим имитации">SW_2.Sim</ts>
+				<ts caption="Задвижка 2 Открыта  ">SW_2.Status.Open</ts>
+				<ts caption="Задвижка 2 Открывается  ">SW_2.Status.ToOpen</ts>
+				<ts caption="Задвижка 2 Наличие напряжения">SW_2.Ucontrol</ts>
+				<ts caption="Задвижка 2 Закрыта  ">SW_2.Status.Close</ts>
+				<ts caption="Задвижка 2 Закрывается  ">SW_2.Status.ToClose</ts>
+				<ts caption="Задвижка 1 в промежуточном положении "></ts>
+				<ts caption="Задвижка 1 Режим имитации">SW_1.Sim</ts>
+				<ts caption="Задвижка 1 Открыта  ">SW_1.Status.Open</ts>
+				<ts caption="Задвижка 1 Открывается  ">SW_1.Status.ToOpen</ts>
+				<ts caption="Задвижка 1 Наличие напряжения">SW_1.Ucontrol</ts>
+				<ts caption="Задвижка 1 Закрыта  ">SW_1.Status.Close</ts>
+				<ts caption="Задвижка 1 Закрывается  ">SW_1.Status.ToClose</ts>
+			</ts_other>
+			<tu_command>
+				<tu caption="Магистральный агрегат №{0}. Пуск">TU.ON</tu>
+				<tu caption="Магистральный агрегат №{0}. Стоп">TU.OFF</tu>
+			</tu_command>
+		</mna>
+		<mna caption="НПС Сосьва-2 - МНА №2" tag="AK.SIBNP.R_Uraj.NPS_Sosv2.MNA_{0}"  position="2"  numeric="true">
+			<ts_security>
+				<ts caption="Аварийная макс. температура нефти корпуса насоса">AlmT.AlarmMaxTCorp</ts>
+				<ts caption="Аварийная максимальная вибрация насоса в нестационарном режиме МНА">AlmVibr.AlmVibrN</ts>
+				<ts caption="Аварийная максимальная вибрация насоса в стационарном режиме МНА в РИП, порог 1">AlmVibr.AlmVibrN.AlarmVibrIntN1</ts>
+				<ts caption="Аварийная максимальная вибрация насоса в стационарном режиме МНА вне РИП, порог 1">AlmVibr.AlmVibrN.AlarmVibrOutIntN1</ts>
+				<ts caption="Аварийная максимальная вибрация насоса, порог 2">AlmVibr.AlmVibrN.AlarmVibrN2</ts>
+				<ts caption="Аварийная максимальная вибрация электродвигателя в нестационарном режиме МНА">AlmVibr.AlarmVibrDNst</ts>
+				<ts caption="Аварийная максимальная вибрация электродвигателя в стационарном режиме МНА, порог 1">AlmVibr.AlarmVibrD1</ts>
+				<ts caption="Аварийная максимальная вибрация электродвигателя, порог 2">AlmVibr.AlarmVibrD2</ts>
+				<ts caption="Аварийная максимальная температура горячего воздуха в корпусе электродвигателя">AlmT.AlarmMaxTHotAirCorp</ts>
+				<ts caption="Аварийная максимальная температура железа статора электродвигателя">AlmT.AlarmMaxTDSerStat</ts>
+				<ts caption="Аварийная максимальная температура обмоток статора электродвигателя">AlmT.AlarmMaxTDObStat</ts>
+				<ts caption="Аварийная максимальная температура подшипников насоса">AlmT.AlarmMaxTN</ts>
+				<ts caption="Аварийная максимальная температура подшипников электродвигателя">AlmT.AlarmMaxTD</ts>
+				<ts caption="Аварийное максимальное давление охлаждающей воды электродвигателя">AlmPress.AlarmMaxPColdWaterD</ts>
+				<ts caption="Аварийное минимальное давление воздуха в зоне клапана продувки">AlmPress.AlarmMinPAir</ts>
+				<ts caption="Аварийное минимальное давление воздуха в корпусе возбудителя">AlmPress.AlarmMinPAirCorp</ts>
+				<ts caption="Аварийное минимальное давление воздуха в корпусе ЭД">AlmPress.AlarmMinPAirD</ts>
+				<ts caption="Аварийное минимальное давление масла перед подшипниками">AlmPress.AlarmMinPLubr</ts>
+				<ts caption="Аварийное осевое смещение ротора насоса">AlmVibr.AlarmVibrNOs</ts>
+				<ts caption="Аварийное отключение агрегата кнопкой «Стоп» по месту">AlmHeap.AlarmStop</ts>
+				<ts caption="Аварийное отключение агрегата кнопкой «Стоп» с БРУ">AlmHeap.AlarmStopBRU</ts>
+				<ts caption="Аварийные утечки нефти через торцовые уплотнения насоса">AlmLeak.AlarmLeak</ts>
+				<ts caption="Невыполнение команды остановки МНА">AlmHeap.AlarmComStop</ts>
+				<ts caption="Невыполнение команды отключения ВВ МНА">AlmHeap.AlarmComOffVV</ts>
+				<ts caption="Невыполнение программы пуска агрегата">AlmHeap.AlarmProg</ts>
+				<ts caption="Недостоверность измерений вибрации в группе датчиков насоса МНА">AlmHeap.AlarmFailureVibrN</ts>
+				<ts caption="Недостоверность измерений вибрации в группе датчиков ЭД МНА">AlmHeap.AlarmFailureVibrD</ts>
+				<ts caption="Недостоверность измерений давления воздуха в корпусе возбудителя">AlmPress.AlarmBadPCorpV</ts>
+				<ts caption="Недостоверность измерений давления воздуха в корпусе электродвигателя">AlmPress.AlarmBadPCorpD</ts>
+				<ts caption="Недостоверность измерений давления масла перед подшипниками">AlmPress.AlarmBadPLubr</ts>
+				<ts caption="Недостоверность измерений температуры корпуса насоса ">AlmHeap.AlarmFailureTCorp</ts>
+				<ts caption="Недостоверность измерений температуры подшипников насоса">AlmHeap.AlarmFailureTN</ts>
+				<ts caption="Недостоверность измерений температуры подшипников электродвигателя">AlmHeap.AlarmFailureTD</ts>
+				<ts caption="Несанкционированное включение МНА">AlmHeap.AlarmOff</ts>
+				<ts caption="Несанкционированное закрытие задвижки на выходе работающего агрегата">AlmHeap.AlarmStatusSWOut</ts>
+				<ts caption="Несанкционированное закрытие задвижки на приеме работающего агрегата">AlmHeap.AlarmStatusSWIn</ts>
+				<ts caption="Несанкционированное отключение МНА">AlmHeap.AlarmOn</ts>
+				<ts caption="Отключение ВВ МНА от АЧР">AlmHeap.AlarmOffVVACR</ts>
+				<ts caption="Электрическая защита электродвигателя">AlmHeap.AlarmStopEZD</ts>
+				<ts caption="Сработала агрегатная защита"></ts>
+			</ts_security>
+			<ts_other>
+				<ts caption="ВВ МНА включен">AlarmVVOn</ts>
+			</ts_other>
+			<tu_command>
+				<tu caption="Магистральный агрегат №2. Пуск">TU.ON</tu>
+				<tu caption="Магистральный агрегат №2. Стоп">TU.OFF</tu>
+			</tu_command>
+		</mna>
+		<mna caption="НПС Ягодное - МНА №3" tag="asd"></mna>
+		<mna caption="НПС Ягодное - МНА №4" tag="asd"></mna>
+	</to_mna>
+<report_temperature>
+</report_temperature>
+</sdku_reader>
