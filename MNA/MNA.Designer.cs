@@ -28,25 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlMain = new System.Windows.Forms.TableLayoutPanel();
             this.lbMnaList = new System.Windows.Forms.ListBox();
             this.tlRight = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this._saveButton = new System.Windows.Forms.Button();
             this.nColumnCaption = new System.Windows.Forms.NumericUpDown();
             this.lColumnCaption = new System.Windows.Forms.Label();
             this.lColumnTag = new System.Windows.Forms.Label();
             this.nColumnTag = new System.Windows.Forms.NumericUpDown();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.dgParameters = new System.Windows.Forms.DataGridView();
+            this.lMnaNumber = new System.Windows.Forms.Label();
+            this.nMnaNumber = new System.Windows.Forms.NumericUpDown();
             this.tlMain.SuspendLayout();
             this.tlRight.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnCaption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nMnaNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // tlMain
@@ -85,14 +87,15 @@
             this.tlRight.Location = new System.Drawing.Point(403, 3);
             this.tlRight.Name = "tlRight";
             this.tlRight.RowCount = 2;
-            this.tlRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tlRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tlRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlRight.Size = new System.Drawing.Size(859, 475);
             this.tlRight.TabIndex = 1;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this._saveButton);
+            this.panel1.Controls.Add(this.nMnaNumber);
+            this.panel1.Controls.Add(this.lMnaNumber);
             this.panel1.Controls.Add(this.nColumnCaption);
             this.panel1.Controls.Add(this.lColumnCaption);
             this.panel1.Controls.Add(this.lColumnTag);
@@ -101,23 +104,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(853, 104);
+            this.panel1.Size = new System.Drawing.Size(853, 144);
             this.panel1.TabIndex = 0;
-            // 
-            // _saveButton
-            // 
-            this._saveButton.Location = new System.Drawing.Point(552, 54);
-            this._saveButton.Name = "_saveButton";
-            this._saveButton.Size = new System.Drawing.Size(75, 23);
-            this._saveButton.TabIndex = 5;
-            this._saveButton.Text = "button1";
-            this._saveButton.UseVisualStyleBackColor = true;
             // 
             // nColumnCaption
             // 
-            this.nColumnCaption.Location = new System.Drawing.Point(137, 20);
+            this.nColumnCaption.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nColumnCaption.Location = new System.Drawing.Point(198, 16);
             this.nColumnCaption.Name = "nColumnCaption";
-            this.nColumnCaption.Size = new System.Drawing.Size(120, 20);
+            this.nColumnCaption.Size = new System.Drawing.Size(120, 31);
             this.nColumnCaption.TabIndex = 4;
             this.nColumnCaption.Value = new decimal(new int[] {
             2,
@@ -128,26 +123,29 @@
             // lColumnCaption
             // 
             this.lColumnCaption.AutoSize = true;
-            this.lColumnCaption.Location = new System.Drawing.Point(29, 23);
+            this.lColumnCaption.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lColumnCaption.Location = new System.Drawing.Point(26, 24);
             this.lColumnCaption.Name = "lColumnCaption";
-            this.lColumnCaption.Size = new System.Drawing.Size(103, 13);
+            this.lColumnCaption.Size = new System.Drawing.Size(161, 23);
             this.lColumnCaption.TabIndex = 3;
             this.lColumnCaption.Text = "Столбец описания:";
             // 
             // lColumnTag
             // 
             this.lColumnTag.AutoSize = true;
-            this.lColumnTag.Location = new System.Drawing.Point(52, 63);
+            this.lColumnTag.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lColumnTag.Location = new System.Drawing.Point(70, 64);
             this.lColumnTag.Name = "lColumnTag";
-            this.lColumnTag.Size = new System.Drawing.Size(77, 13);
+            this.lColumnTag.Size = new System.Drawing.Size(117, 23);
             this.lColumnTag.TabIndex = 2;
             this.lColumnTag.Text = "Столбец тега:";
             // 
             // nColumnTag
             // 
-            this.nColumnTag.Location = new System.Drawing.Point(137, 60);
+            this.nColumnTag.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nColumnTag.Location = new System.Drawing.Point(198, 56);
             this.nColumnTag.Name = "nColumnTag";
-            this.nColumnTag.Size = new System.Drawing.Size(120, 20);
+            this.nColumnTag.Size = new System.Drawing.Size(120, 31);
             this.nColumnTag.TabIndex = 1;
             this.nColumnTag.Value = new decimal(new int[] {
             4,
@@ -157,9 +155,10 @@
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(270, 23);
+            this.btnOpenFile.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnOpenFile.Location = new System.Drawing.Point(336, 16);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(226, 56);
+            this.btnOpenFile.Size = new System.Drawing.Size(227, 112);
             this.btnOpenFile.TabIndex = 0;
             this.btnOpenFile.Text = "Открыть файл Excel";
             this.btnOpenFile.UseVisualStyleBackColor = true;
@@ -170,30 +169,58 @@
             this.dgParameters.AllowUserToDeleteRows = false;
             this.dgParameters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgParameters.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgParameters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgParameters.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgParameters.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgParameters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgParameters.Location = new System.Drawing.Point(3, 113);
+            this.dgParameters.Location = new System.Drawing.Point(3, 153);
             this.dgParameters.Name = "dgParameters";
             this.dgParameters.ReadOnly = true;
             this.dgParameters.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgParameters.Size = new System.Drawing.Size(853, 359);
             this.dgParameters.TabIndex = 1;
+            // 
+            // lMnaNumber
+            // 
+            this.lMnaNumber.AutoSize = true;
+            this.lMnaNumber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lMnaNumber.Location = new System.Drawing.Point(33, 105);
+            this.lMnaNumber.Name = "lMnaNumber";
+            this.lMnaNumber.Size = new System.Drawing.Size(154, 23);
+            this.lMnaNumber.TabIndex = 5;
+            this.lMnaNumber.Text = "Номер МНА/ПНА:";
+            // 
+            // nMnaNumber
+            // 
+            this.nMnaNumber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nMnaNumber.Location = new System.Drawing.Point(198, 97);
+            this.nMnaNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nMnaNumber.Name = "nMnaNumber";
+            this.nMnaNumber.Size = new System.Drawing.Size(120, 31);
+            this.nMnaNumber.TabIndex = 6;
+            this.nMnaNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // MNA
             // 
@@ -211,6 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nColumnCaption)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nMnaNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -226,7 +254,8 @@
         private System.Windows.Forms.Label lColumnCaption;
         private System.Windows.Forms.Label lColumnTag;
         private System.Windows.Forms.NumericUpDown nColumnTag;
-        private System.Windows.Forms.Button _saveButton;
+        private System.Windows.Forms.NumericUpDown nMnaNumber;
+        private System.Windows.Forms.Label lMnaNumber;
     }
 }
 

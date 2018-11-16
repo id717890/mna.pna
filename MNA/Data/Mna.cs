@@ -9,6 +9,7 @@ namespace MNA.Data
         public string Caption { get; set; }
         public string BaseTag { get; set; }
         public string Position { get; set; }
+        public bool TagWithNumber { get; set; }
         public IEnumerable<Tag> TsSecurity { get; set; }
         public IEnumerable<Tag> TsOther { get; set; }
         public IEnumerable<Tag> Tu { get; set; }

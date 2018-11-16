@@ -7,12 +7,10 @@ using MNA.Interfaces;
 
 namespace MNA
 {
-    public partial class MNA : Form, IMnaViewNew
+    public partial class MNA : Form, IMnaView
     {
         public void Attach(IMnaPresenterCallback callback)
         {
-            _saveButton.Click += (sender, e) => callback.OnSave();
-            nColumnCaption.TextChanged += (sender, e) => callback.OnMyTextChanged();
             lbMnaList.SelectedIndexChanged += (sender, e) =>
             {
                 RenderParametersGrid();
@@ -25,6 +23,18 @@ namespace MNA
                     callback.OnOpenExcelFile(fileName);
                 }
             };
+        }
+
+        public int MnaNumber
+        {
+            get => (Int32)nMnaNumber.Value;
+            set => nMnaNumber.Value = value;
+        }
+
+        public bool IsMnaNumber
+        {
+            get => nMnaNumber.Enabled;
+            set => nMnaNumber.Enabled = value;
         }
 
         public int ColumnCaption
@@ -68,6 +78,10 @@ namespace MNA
             dgParameters.Columns.Add("Num", "#");
             dgParameters.Columns.Add("Parameter", "Параметр");
             dgParameters.Columns.Add("Status", "Статус");
+            foreach(DataGridViewColumn column in dgParameters.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         public void RenderParametersGrid()
@@ -80,6 +94,7 @@ namespace MNA
                     dgParameters.Rows.Clear();
                     Int16 rowNum = 1;
                     dgParameters.Rows.Add(String.Empty, "Агрегатные защиты");
+                    dgParameters.Rows[rowNum-1].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                     foreach (Tag tag in selectedMna.TsSecurity)
                     {
                         dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
@@ -88,8 +103,10 @@ namespace MNA
                     }
 
                     dgParameters.Rows.Add();
+                    rowNum++;
                     dgParameters.Rows.Add(String.Empty, "Прочие сигналы");
-                    rowNum += 2;
+                    dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
+                    rowNum ++;
 
                     foreach (Tag tag in selectedMna.TsOther)
                     {
@@ -99,9 +116,11 @@ namespace MNA
                     }
 
                     dgParameters.Rows.Add();
-                    rowNum += 2;
-
+                    rowNum ++;
                     dgParameters.Rows.Add(String.Empty, "Телеуправление");
+                    dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
+                    rowNum++;
+
                     foreach (Tag tag in selectedMna.Tu)
                     {
                         dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);

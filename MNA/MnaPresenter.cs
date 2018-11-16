@@ -14,13 +14,13 @@ namespace MNA
     {
         const string CfgFile = "\\configs\\mna_service.xml";
 
-        private readonly IMnaViewNew _view;
+        private readonly IMnaView _view;
         private IMnaViewModel _model;
 
         private static bool _isInit = false;
 
 
-        public MnaPresenterNew(IMnaViewNew view, IMnaViewModel model)
+        public MnaPresenterNew(IMnaView view, IMnaViewModel model)
         {
             _view = view;
             _model = model;
@@ -35,19 +35,7 @@ namespace MNA
         {
             ReadConfig();
             _view.Attach(this);
-            //_view.SaveButtonText = "Save";
-            //_view.SaveButtonEnabled = false;
 
-        }
-
-        public void OnSave()
-        {
-            // Save _view.MyText
-        }
-
-        public void OnMyTextChanged()
-        {
-            //_view.SaveButtonEnabled = !string.IsNullOrEmpty(_view.MyText);
         }
 
         public void OnMnaChenged(Mna mna)
@@ -60,6 +48,11 @@ namespace MNA
             return tags.ToList().SingleOrDefault(x => x.FullName.ToLower() == tag.ToLower());
         }
 
+        private Tag FindTagInList(string tag, IEnumerable<Tag> tags, string mnaNumber)
+        {
+            return tags.ToList().SingleOrDefault(x => string.Format(x.FullName, mnaNumber).ToLower() == tag.ToLower());
+        }
+
         public void OnOpenExcelFile(string fileName)
         {
             ResetStatusCurrentMna();
@@ -68,28 +61,15 @@ namespace MNA
                 ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
                 var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
                 for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                {
-                    Tag findTag = FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
+                {                    
+                    Tag findTag = _model.CurrentMna.TagWithNumber 
+                        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString()) 
+                        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
                     if (findTag != null)
                     {
-                        //currentMna.TsSecurity.FirstOrDefault().Status = "OK";
                         findTag.Status = "OK";
                     }
                 }
-
-                //var sheet = excel.Workbook.Worksheets.First();
-                //for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                //{
-                //    try
-                //    {
-                //        goodList.Add(new Good
-                //        {
-                //            Code = sheet.Cells[rowNum, 2].Text,
-                //            Name = sheet.Cells[rowNum, 1].Text
-                //        });
-                //    }
-                //    catch { }
-                //}
             }
             _view.RenderParametersGrid();
         }
@@ -122,6 +102,15 @@ namespace MNA
                                     Position = positionMna.Value,
                                     Id = Guid.NewGuid()
                                 };
+
+                                XAttribute tagWithNumber = mna.Attribute("numeric");
+                                if (tagWithNumber !=null && Boolean.Parse(tagWithNumber.Value))
+                                {
+                                    mnaItem.TagWithNumber = true;
+                                } else
+                                {
+                                    mnaItem.TagWithNumber = false;
+                                }
 
                                 #region Читаем раздел "ts_security"
                                 var tsSecurityInner = mna.Element("ts_security");
@@ -209,8 +198,9 @@ namespace MNA
                         }
                     }
                     _isInit = true;
-                    _model = new MnaViewModel {MnaList = model, CurrentMna = model[0]};
+                    _model = new MnaViewModel {MnaList = model.OrderBy(x => x.Position), CurrentMna = model[0]};
                     _view.SetModel(_model);
+                    _view.IsMnaNumber = _model.CurrentMna.TagWithNumber;
                 }
             }
         }
@@ -218,6 +208,7 @@ namespace MNA
         public void SetCurrentMna(Mna mna)
         {
             _model.CurrentMna = mna;
+            _view.IsMnaNumber = mna.TagWithNumber;
         }
 
         public void ResetStatusCurrentMna()

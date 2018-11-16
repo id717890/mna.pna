@@ -69,7 +69,7 @@
     <Compile Include="Interfaces\IMnaPresenterCallback.cs" />
     <Compile Include="Interfaces\IMnaPresenter.cs" />
     <Compile Include="Interfaces\IMnaViewModel.cs" />
-    <Compile Include="Interfaces\IMnaViewNew.cs" />
+    <Compile Include="Interfaces\IMnaView.cs" />
     <Compile Include="Interfaces\IPresenter.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="MNA.cs">

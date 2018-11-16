@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdku_reader>
 	<to_mna>
-		<mna caption="НПС Ягодное - МНА №1" tag="AK.SIBNP.R_Uraj.NPS_Jagod.MNA_1" position="1">
+		<mna caption="НПС Ягодное - МНА №1" tag="AK.SIBNP.R_Uraj.NPS_Jagod.MNA_{0}" position="1">
 			<ts_security>
 				<ts caption="Сработала агрегатная защита 'Электрическая защита'">AlmHeap.AlarmStopEZ</ts>
 				<ts caption="Сработала агрегатная защита 'Повышенная температура'">AlmT.AlarmT</ts>
@@ -45,7 +45,7 @@
 				<tu caption="Магистральный агрегат №{0}. Стоп">TU.OFF</tu>
 			</tu_command>
 		</mna>
-		<mna caption="НПС Сосьва-2 - МНА №2" tag="AK.SIBNP.R_Uraj.NPS_Sosv2.MNA_2"  position="2">
+		<mna caption="НПС Сосьва-2 - МНА №2" tag="AK.SIBNP.R_Uraj.NPS_Sosv2.MNA_{0}"  position="2"  numeric="true">
 			<ts_security>
 				<ts caption="Аварийная макс. температура нефти корпуса насоса">AlmT.AlarmMaxTCorp</ts>
 				<ts caption="Аварийная максимальная вибрация насоса в нестационарном режиме МНА">AlmVibr.AlmVibrN</ts>

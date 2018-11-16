@@ -10,7 +10,7 @@ namespace MNA
         {
 
             Bind<IMnaPresenter>().To<MnaPresenterNew>();
-            Bind<IMnaViewNew>().To<MNA>();
+            Bind<IMnaView>().To<MNA>();
             Bind<IMnaViewModel>().To<MnaViewModel>();
 
             //Bind<IMnaPresenter>().To<MnaPresenter>();
