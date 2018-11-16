@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MNA.Interfaces;
 
 namespace MNA
 {
@@ -22,14 +23,17 @@ namespace MNA
             var kernel = new StandardKernel();
 
             CompositionRoot.Init(kernel);
-            kernel.Load(Assembly.GetExecutingAssembly());
+            //kernel.Load(Assembly.GetExecutingAssembly());
 
             CompositionRoot.Wire(new CompositeModule());
             //var kernel = new StandardKernel(new MyInjectModule());
 
             //Application.Run(CompositionRoot.Resolve<MNA>());
             //Application.Run(CompositionRoot.Resolve<MNA>());
-            Application.Run(CompositionRoot.Resolve<MNA>());
+            //Application.Run(CompositionRoot.Resolve<MNA>());
+            var presenter = CompositionRoot.Resolve<IMnaPresenterNew>();
+            presenter.Initialize();
+            Application.Run((Form)presenter.Ui);
         }
     }
 }

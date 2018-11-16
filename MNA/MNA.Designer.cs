@@ -34,18 +34,19 @@
             this.lbMnaList = new System.Windows.Forms.ListBox();
             this.tlRight = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this._saveButton = new System.Windows.Forms.Button();
+            this.nColumnCaption = new System.Windows.Forms.NumericUpDown();
+            this.lColumnCaption = new System.Windows.Forms.Label();
+            this.lColumnTag = new System.Windows.Forms.Label();
+            this.nColumnTag = new System.Windows.Forms.NumericUpDown();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.dgParameters = new System.Windows.Forms.DataGridView();
-            this.nColumnTag = new System.Windows.Forms.NumericUpDown();
-            this.lColumnTag = new System.Windows.Forms.Label();
-            this.lColumnCaption = new System.Windows.Forms.Label();
-            this.nColumnCaption = new System.Windows.Forms.NumericUpDown();
             this.tlMain.SuspendLayout();
             this.tlRight.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnCaption)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).BeginInit();
             this.SuspendLayout();
             // 
             // tlMain
@@ -73,7 +74,6 @@
             this.lbMnaList.Name = "lbMnaList";
             this.lbMnaList.Size = new System.Drawing.Size(394, 475);
             this.lbMnaList.TabIndex = 0;
-            this.lbMnaList.SelectedIndexChanged += new System.EventHandler(this.lbMnaList_SelectedIndexChanged);
             // 
             // tlRight
             // 
@@ -92,6 +92,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this._saveButton);
             this.panel1.Controls.Add(this.nColumnCaption);
             this.panel1.Controls.Add(this.lColumnCaption);
             this.panel1.Controls.Add(this.lColumnTag);
@@ -103,6 +104,57 @@
             this.panel1.Size = new System.Drawing.Size(853, 104);
             this.panel1.TabIndex = 0;
             // 
+            // _saveButton
+            // 
+            this._saveButton.Location = new System.Drawing.Point(552, 54);
+            this._saveButton.Name = "_saveButton";
+            this._saveButton.Size = new System.Drawing.Size(75, 23);
+            this._saveButton.TabIndex = 5;
+            this._saveButton.Text = "button1";
+            this._saveButton.UseVisualStyleBackColor = true;
+            // 
+            // nColumnCaption
+            // 
+            this.nColumnCaption.Location = new System.Drawing.Point(137, 20);
+            this.nColumnCaption.Name = "nColumnCaption";
+            this.nColumnCaption.Size = new System.Drawing.Size(120, 20);
+            this.nColumnCaption.TabIndex = 4;
+            this.nColumnCaption.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // lColumnCaption
+            // 
+            this.lColumnCaption.AutoSize = true;
+            this.lColumnCaption.Location = new System.Drawing.Point(29, 23);
+            this.lColumnCaption.Name = "lColumnCaption";
+            this.lColumnCaption.Size = new System.Drawing.Size(103, 13);
+            this.lColumnCaption.TabIndex = 3;
+            this.lColumnCaption.Text = "Столбец описания:";
+            // 
+            // lColumnTag
+            // 
+            this.lColumnTag.AutoSize = true;
+            this.lColumnTag.Location = new System.Drawing.Point(52, 63);
+            this.lColumnTag.Name = "lColumnTag";
+            this.lColumnTag.Size = new System.Drawing.Size(77, 13);
+            this.lColumnTag.TabIndex = 2;
+            this.lColumnTag.Text = "Столбец тега:";
+            // 
+            // nColumnTag
+            // 
+            this.nColumnTag.Location = new System.Drawing.Point(137, 60);
+            this.nColumnTag.Name = "nColumnTag";
+            this.nColumnTag.Size = new System.Drawing.Size(120, 20);
+            this.nColumnTag.TabIndex = 1;
+            this.nColumnTag.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
             // btnOpenFile
             // 
             this.btnOpenFile.Location = new System.Drawing.Point(270, 23);
@@ -111,7 +163,6 @@
             this.btnOpenFile.TabIndex = 0;
             this.btnOpenFile.Text = "Открыть файл Excel";
             this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // dgParameters
             // 
@@ -144,48 +195,6 @@
             this.dgParameters.Size = new System.Drawing.Size(853, 359);
             this.dgParameters.TabIndex = 1;
             // 
-            // nColumnTag
-            // 
-            this.nColumnTag.Location = new System.Drawing.Point(137, 60);
-            this.nColumnTag.Name = "nColumnTag";
-            this.nColumnTag.Size = new System.Drawing.Size(120, 20);
-            this.nColumnTag.TabIndex = 1;
-            this.nColumnTag.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // lColumnTag
-            // 
-            this.lColumnTag.AutoSize = true;
-            this.lColumnTag.Location = new System.Drawing.Point(52, 63);
-            this.lColumnTag.Name = "lColumnTag";
-            this.lColumnTag.Size = new System.Drawing.Size(77, 13);
-            this.lColumnTag.TabIndex = 2;
-            this.lColumnTag.Text = "Столбец тега:";
-            // 
-            // lColumnCaption
-            // 
-            this.lColumnCaption.AutoSize = true;
-            this.lColumnCaption.Location = new System.Drawing.Point(29, 23);
-            this.lColumnCaption.Name = "lColumnCaption";
-            this.lColumnCaption.Size = new System.Drawing.Size(103, 13);
-            this.lColumnCaption.TabIndex = 3;
-            this.lColumnCaption.Text = "Столбец описания:";
-            // 
-            // nColumnCaption
-            // 
-            this.nColumnCaption.Location = new System.Drawing.Point(137, 20);
-            this.nColumnCaption.Name = "nColumnCaption";
-            this.nColumnCaption.Size = new System.Drawing.Size(120, 20);
-            this.nColumnCaption.TabIndex = 4;
-            this.nColumnCaption.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
             // MNA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,9 +208,9 @@
             this.tlRight.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnCaption)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,6 +226,7 @@
         private System.Windows.Forms.Label lColumnCaption;
         private System.Windows.Forms.Label lColumnTag;
         private System.Windows.Forms.NumericUpDown nColumnTag;
+        private System.Windows.Forms.Button _saveButton;
     }
 }
 

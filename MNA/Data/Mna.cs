@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MNA.Data
 {
     public class Mna
     {
+        public Guid Id { get; set; }
         public string Caption { get; set; }
         public string BaseTag { get; set; }
         public string Position { get; set; }

@@ -10,6 +10,7 @@ namespace MNA
     {
         private IMnaView _view;
 
-        public MNA View { set => _view = value; }
+        //public MNA View { set => _view = value; }
+        public MNA View { get; set; }
     }
 }
