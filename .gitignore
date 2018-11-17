@@ -11,6 +11,7 @@
 **.ldf
 **.user
 /**/bin
+/**/obj
 /.vs
 .vs/**
 packages
