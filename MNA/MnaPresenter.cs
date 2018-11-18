@@ -61,9 +61,9 @@ namespace MNA
                 ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
                 var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
                 for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                {                    
-                    Tag findTag = _model.CurrentMna.TagWithNumber 
-                        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString()) 
+                {
+                    Tag findTag = _model.CurrentMna.TagWithNumber
+                        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
                         : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
                     if (findTag != null)
                     {
@@ -73,7 +73,6 @@ namespace MNA
             }
             _view.RenderParametersGrid();
         }
-
 
         public void ReadConfig()
         {
@@ -85,122 +84,132 @@ namespace MNA
                 if (File.Exists(AppSettings.AppFolder + CfgFile))
                 {
                     var xdoc = XDocument.Load(AppSettings.AppFolder + CfgFile);
-                    var mnaList = xdoc.Element("sdku_reader").Element("to_mna").Elements("mna");
-                    foreach (var mna in mnaList)
+                    var mnaList = xdoc.Element("sdku_reader")?.Element("to_object")?.Elements("object");
+                    if (mnaList != null && mnaList.Any())
                     {
-                        if (mna != null)
+                        foreach (var mna in mnaList)
                         {
-                            XAttribute captionMna = mna.Attribute("caption");
-                            XAttribute tagMna = mna.Attribute("tag");
-                            XAttribute positionMna = mna.Attribute("position");
-                            if ((captionMna != null) && (tagMna != null) && (positionMna != null))
+                            if (mna != null)
                             {
-                                var mnaItem = new Mna
+                                XAttribute captionMna = mna.Attribute("caption");
+                                XAttribute tagMna = mna.Attribute("tag");
+                                XAttribute positionMna = mna.Attribute("position");
+                                if ((captionMna != null) && (tagMna != null) && (positionMna != null))
                                 {
-                                    Caption = captionMna.Value,
-                                    BaseTag = tagMna.Value,
-                                    Position = positionMna.Value,
-                                    Id = Guid.NewGuid()
-                                };
-
-                                XAttribute tagWithNumber = mna.Attribute("numeric");
-                                if (tagWithNumber !=null && Boolean.Parse(tagWithNumber.Value))
-                                {
-                                    mnaItem.TagWithNumber = true;
-                                } else
-                                {
-                                    mnaItem.TagWithNumber = false;
-                                }
-
-                                #region Читаем раздел "ts_security"
-                                var tsSecurityInner = mna.Element("ts_security");
-                                if (tsSecurityInner != null)
-                                {
-                                    var tsSecurityList = mna.Element("ts_security").Elements("ts");
-                                    var tsSecurity = new List<Tag>();
-                                    foreach (var ts in tsSecurityList)
+                                    var mnaItem = new Mna
                                     {
-                                        if (ts != null)
+                                        Caption = captionMna.Value,
+                                        BaseTag = tagMna.Value,
+                                        Position = positionMna.Value,
+                                        Id = Guid.NewGuid()
+                                    };
+
+                                    XAttribute tagWithNumber = mna.Attribute("numeric");
+                                    if (tagWithNumber != null && Boolean.Parse(tagWithNumber.Value))
+                                    {
+                                        mnaItem.TagWithNumber = true;
+                                    }
+                                    else
+                                    {
+                                        mnaItem.TagWithNumber = false;
+                                    }
+
+                                    #region Читаем раздел "ts_security"
+                                    var tsSecurityInner = mna.Element("ts_security");
+                                    if (tsSecurityInner != null)
+                                    {
+                                        var tsSecurityCaption = mna.Element("ts_security").Attribute("caption");
+                                        var tsSecurityList = mna.Element("ts_security").Elements("ts");
+                                        var tsSecurity = new List<Tag>();
+                                        foreach (var ts in tsSecurityList)
                                         {
-                                            XAttribute captionTag = ts.Attribute("caption");
-                                            var nameTag = ts.Value;
-                                            if ((captionTag != null) && (nameTag != null))
+                                            if (ts != null)
                                             {
-                                                tsSecurity.Add(new Tag()
+                                                XAttribute captionTag = ts.Attribute("caption");
+                                                var nameTag = ts.Value;
+                                                if ((captionTag != null) && (nameTag != null))
                                                 {
-                                                    Caption = captionTag.Value,
-                                                    Name = nameTag,
-                                                    FullName = mnaItem.BaseTag + "." + nameTag
-                                                });
+                                                    tsSecurity.Add(new Tag()
+                                                    {
+                                                        Caption = captionTag.Value,
+                                                        Name = nameTag,
+                                                        FullName = mnaItem.BaseTag + "." + nameTag
+                                                    });
+                                                }
                                             }
                                         }
+                                        mnaItem.TsSecurity = tsSecurity;
+                                        mnaItem.TsSecurityCaption = tsSecurityCaption.Value;
                                     }
-                                    mnaItem.TsSecurity = tsSecurity;
-                                }
-                                #endregion
+                                    #endregion
 
-                                #region Читаем раздел "ts_other"
-                                var tsOtherInner = mna.Element("ts_other");
-                                if (tsOtherInner != null)
-                                {
-                                    var tsOtherList = mna.Element("ts_other").Elements("ts");
-                                    var tsOther = new List<Tag>();
-                                    foreach (var ts in tsOtherList)
+                                    #region Читаем раздел "ts_other"
+                                    var tsOtherInner = mna.Element("ts_other");
+                                    if (tsOtherInner != null)
                                     {
-                                        if (ts != null)
+                                        var tsOtherCaption = mna.Element("ts_other").Attribute("caption");
+                                        var tsOtherList = mna.Element("ts_other").Elements("ts");
+                                        var tsOther = new List<Tag>();
+                                        foreach (var ts in tsOtherList)
                                         {
-                                            XAttribute captionTag = ts.Attribute("caption");
-                                            var nameTag = ts.Value;
-                                            if ((captionTag != null) && (nameTag != null))
+                                            if (ts != null)
                                             {
-                                                tsOther.Add(new Tag()
+                                                XAttribute captionTag = ts.Attribute("caption");
+                                                var nameTag = ts.Value;
+                                                if ((captionTag != null) && (nameTag != null))
                                                 {
-                                                    Caption = captionTag.Value,
-                                                    Name = nameTag,
-                                                    FullName = mnaItem.BaseTag + "." + nameTag
-                                                });
+                                                    tsOther.Add(new Tag()
+                                                    {
+                                                        Caption = captionTag.Value,
+                                                        Name = nameTag,
+                                                        FullName = mnaItem.BaseTag + "." + nameTag
+                                                    });
+                                                }
                                             }
                                         }
+                                        mnaItem.TsOther = tsOther;
+                                        mnaItem.TsOtherCaption = tsOtherCaption.Value;
                                     }
-                                    mnaItem.TsOther = tsOther;
-                                }
-                                #endregion
-                                #region Читаем раздел "tu"
-                                var tuInner = mna.Element("tu_command");
-                                if (tuInner != null)
-                                {
-                                    var tuList = mna.Element("tu_command").Elements("tu");
-                                    var tuCommand = new List<Tag>();
-                                    foreach (var tu in tuList)
+                                    #endregion
+                                    #region Читаем раздел "tu"
+                                    var tuInner = mna.Element("tu_command");
+                                    if (tuInner != null)
                                     {
-                                        if (tu != null)
+                                        var tuCaption = mna.Element("tu_command").Attribute("caption");
+                                        var tuList = mna.Element("tu_command").Elements("tu");
+                                        var tuCommand = new List<Tag>();
+                                        foreach (var tu in tuList)
                                         {
-                                            XAttribute captionTag = tu.Attribute("caption");
-                                            var nameTag = tu.Value;
-                                            if ((captionTag != null) && (nameTag != null))
+                                            if (tu != null)
                                             {
-                                                tuCommand.Add(new Tag()
+                                                XAttribute captionTag = tu.Attribute("caption");
+                                                var nameTag = tu.Value;
+                                                if ((captionTag != null) && (nameTag != null))
                                                 {
-                                                    Caption = captionTag.Value,
-                                                    Name = nameTag,
-                                                    FullName = mnaItem.BaseTag + "." + nameTag,
-                                                    Id = new Guid()
-                                                });
+                                                    tuCommand.Add(new Tag()
+                                                    {
+                                                        Caption = captionTag.Value,
+                                                        Name = nameTag,
+                                                        FullName = mnaItem.BaseTag + "." + nameTag,
+                                                        Id = new Guid()
+                                                    });
+                                                }
                                             }
                                         }
+                                        mnaItem.Tu = tuCommand;
+                                        mnaItem.TuCaption = tuCaption.Value;
                                     }
-                                    mnaItem.Tu = tuCommand;
-                                }
-                                #endregion
-                                model.Add(mnaItem);
+                                    #endregion
+                                    model.Add(mnaItem);
 
+                                }
                             }
                         }
+                        _isInit = true;
+                        _model = new MnaViewModel { MnaList = model.OrderBy(x => x.Position), CurrentMna = model[0] };
+                        _view.SetModel(_model);
+                        _view.IsMnaNumber = _model.CurrentMna.TagWithNumber;
                     }
-                    _isInit = true;
-                    _model = new MnaViewModel {MnaList = model.OrderBy(x => x.Position), CurrentMna = model[0]};
-                    _view.SetModel(_model);
-                    _view.IsMnaNumber = _model.CurrentMna.TagWithNumber;
                 }
             }
         }

@@ -93,7 +93,7 @@ namespace MNA
                 {
                     dgParameters.Rows.Clear();
                     Int16 rowNum = 1;
-                    dgParameters.Rows.Add(String.Empty, "Агрегатные защиты");
+                    dgParameters.Rows.Add(String.Empty, selectedMna.TsSecurityCaption);
                     dgParameters.Rows[rowNum-1].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                     foreach (Tag tag in selectedMna.TsSecurity)
                     {
@@ -104,7 +104,7 @@ namespace MNA
 
                     dgParameters.Rows.Add();
                     rowNum++;
-                    dgParameters.Rows.Add(String.Empty, "Прочие сигналы");
+                    dgParameters.Rows.Add(String.Empty, selectedMna.TsOtherCaption);
                     dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                     rowNum ++;
 
@@ -117,7 +117,7 @@ namespace MNA
 
                     dgParameters.Rows.Add();
                     rowNum ++;
-                    dgParameters.Rows.Add(String.Empty, "Телеуправление");
+                    dgParameters.Rows.Add(String.Empty, selectedMna.TuCaption);
                     dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                     rowNum++;
 
