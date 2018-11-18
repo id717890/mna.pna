@@ -45,7 +45,14 @@ namespace MNA
 
         private Tag FindTagInList(string tag, IEnumerable<Tag> tags)
         {
-            return tags.ToList().SingleOrDefault(x => x.FullName.ToLower() == tag.ToLower());
+            try
+            {
+                return tags.ToList().SingleOrDefault(x => x.FullName.ToLower() == tag.ToLower());
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private Tag FindTagInList(string tag, IEnumerable<Tag> tags, string mnaNumber)
@@ -59,7 +66,11 @@ namespace MNA
             using (var excel = new ExcelPackage(new FileInfo(fileName)))
             {
                 ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
-                var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
+                List<Tag> allTags = new List<Tag>();
+                if (_model.CurrentMna.TsSecurity != null && _model.CurrentMna.TsSecurity.Any()) allTags.AddRange(_model.CurrentMna.TsSecurity);
+                if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any()) allTags.AddRange(_model.CurrentMna.TsOther);
+                if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
+                //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
                 for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
                 {
                     Tag findTag = _model.CurrentMna.TagWithNumber
@@ -224,18 +235,23 @@ namespace MNA
         {
             if (_model.CurrentMna != null)
             {
-                foreach (Tag tag in _model.CurrentMna.TsSecurity)
-                {
-                    tag.Status = String.Empty;
-                }
-                foreach (Tag tag in _model.CurrentMna.TsOther)
-                {
-                    tag.Status = String.Empty;
-                }
-                foreach (Tag tag in _model.CurrentMna.Tu)
-                {
-                    tag.Status = String.Empty;
-                }
+                if (_model.CurrentMna.TsSecurity != null && _model.CurrentMna.TsSecurity.Any())
+                    foreach (Tag tag in _model.CurrentMna.TsSecurity)
+                    {
+                        tag.Status = String.Empty;
+                    }
+
+                if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any())
+                    foreach (Tag tag in _model.CurrentMna.TsOther)
+                    {
+                        tag.Status = String.Empty;
+                    }
+
+                if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any())
+                    foreach (Tag tag in _model.CurrentMna.Tu)
+                    {
+                        tag.Status = String.Empty;
+                    }
             }
         }
     }

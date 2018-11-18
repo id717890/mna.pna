@@ -93,40 +93,52 @@ namespace MNA
                 {
                     dgParameters.Rows.Clear();
                     Int16 rowNum = 1;
-                    dgParameters.Rows.Add(String.Empty, selectedMna.TsSecurityCaption);
-                    dgParameters.Rows[rowNum-1].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
-                    foreach (Tag tag in selectedMna.TsSecurity)
+
+                    if (selectedMna.TsSecurity !=null && selectedMna.TsSecurity.Any())
                     {
-                        dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
-                        if (tag.Status == "OK") dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
-                        rowNum++;
+                        dgParameters.Rows.Add(String.Empty, selectedMna.TsSecurityCaption);
+                        dgParameters.Rows[rowNum - 1].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
+                        foreach (Tag tag in selectedMna.TsSecurity)
+                        {
+                            dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
+                            if (tag.Status == "OK") dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
+                            rowNum++;
+                        }
                     }
 
-                    dgParameters.Rows.Add();
-                    rowNum++;
-                    dgParameters.Rows.Add(String.Empty, selectedMna.TsOtherCaption);
-                    dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
-                    rowNum ++;
-
-                    foreach (Tag tag in selectedMna.TsOther)
+                    if (selectedMna.TsOther != null && selectedMna.TsOther.Any())
                     {
-                        dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
-                        if (tag.Status == "OK") dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
+                        dgParameters.Rows.Add();
                         rowNum++;
+                        dgParameters.Rows.Add(String.Empty, selectedMna.TsOtherCaption);
+                        dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
+                        rowNum++;
+
+                        foreach (Tag tag in selectedMna.TsOther)
+                        {
+                            dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
+                            if (tag.Status == "OK") dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
+                            rowNum++;
+                        }
                     }
 
-                    dgParameters.Rows.Add();
-                    rowNum ++;
-                    dgParameters.Rows.Add(String.Empty, selectedMna.TuCaption);
-                    dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
-                    rowNum++;
 
-                    foreach (Tag tag in selectedMna.Tu)
+                    if (selectedMna.Tu != null && selectedMna.Tu.Any())
                     {
-                        dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
-                        if (tag.Status == "OK") dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
+                        dgParameters.Rows.Add();
                         rowNum++;
+                        dgParameters.Rows.Add(String.Empty, selectedMna.TuCaption);
+                        dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
+                        rowNum++;
+
+                        foreach (Tag tag in selectedMna.Tu)
+                        {
+                            dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
+                            if (tag.Status == "OK") dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
+                            rowNum++;
+                        }
                     }
+                
                 }
             }
         }
