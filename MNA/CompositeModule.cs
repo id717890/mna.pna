@@ -1,6 +1,8 @@
 ﻿using Ninject.Modules;
-using MNA.Interfaces;
+using App.Interface.Model;
+using App.Interface.View;
 using MNA.Models;
+using App.Interface.Presenter;
 
 namespace MNA
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MNA.Data
+namespace App.Data
 {
     public class Mna
     {

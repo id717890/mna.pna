@@ -1,4 +1,4 @@
-﻿namespace MNA.Interfaces
+﻿namespace App.Interface.Presenter
 {
     public interface IPresenter
     {

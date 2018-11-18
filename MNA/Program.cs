@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using System;
 using System.Windows.Forms;
-using MNA.Interfaces;
+using App.Interface.Presenter;
 
 namespace MNA
 {

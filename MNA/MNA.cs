@@ -1,9 +1,11 @@
-﻿using MNA.Data;
+﻿using App.Data;
 using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using MNA.Interfaces;
+using App.Interface.View;
+using App.Interface.Presenter;
+using App.Interface.Model;
 
 namespace MNA
 {

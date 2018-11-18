@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using MNA.Data;
+using App.Data;
 
-namespace MNA.Interfaces
+namespace App.Interface.Model
 {
     public interface IMnaViewModel
     {

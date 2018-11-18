@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using MNA.Data;
-using MNA.Interfaces;
+using App.Data;
+using App.Interface.Model;
 
 namespace MNA.Models
 {

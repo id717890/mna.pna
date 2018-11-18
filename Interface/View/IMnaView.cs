@@ -1,6 +1,8 @@
 ﻿using System;
+using App.Interface.Presenter;
+using App.Interface.Model;
 
-namespace MNA.Interfaces
+namespace App.Interface.View
 {
     public interface IMnaView:IView<IMnaPresenterCallback>
     {

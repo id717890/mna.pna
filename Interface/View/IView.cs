@@ -1,4 +1,4 @@
-﻿namespace MNA.Interfaces
+﻿namespace App.Interface.View
 {
     public interface IView<TCallbacks>
     {

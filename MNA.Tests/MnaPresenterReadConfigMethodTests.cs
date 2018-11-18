@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MNA.Interfaces;
+using App.Interface.Model;
+using App.Interface.View;
 using Moq;
+using App.Interface.Presenter;
 
 namespace MNA.Tests
 {

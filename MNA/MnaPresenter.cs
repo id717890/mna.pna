@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using MNA.Data;
-using MNA.Interfaces;
+using App.Data;
+using App.Interface.Presenter;
+using App.Interface.View;
+using App.Interface.Model;
 using MNA.Models;
 using OfficeOpenXml;
 
@@ -43,7 +45,7 @@ namespace MNA
             SetCurrentMna(mna);
         }
 
-        private void FindTagInList(IEnumerable<Data.ExcelColumn> excel, IEnumerable<Tag> tags, int mnaNumber = -1)
+        private void FindTagInList(IEnumerable<App.Data.ExcelColumn> excel, IEnumerable<Tag> tags, int mnaNumber = -1)
         {
             if (tags !=null && tags.Any())
             {
@@ -131,10 +133,10 @@ namespace MNA
                 if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
                 //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
 
-                List<Data.ExcelColumn> excelRows = new List<Data.ExcelColumn>();
+                List<App.Data.ExcelColumn> excelRows = new List<App.Data.ExcelColumn>();
                 for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
                 {
-                    excelRows.Add(new Data.ExcelColumn
+                    excelRows.Add(new App.Data.ExcelColumn
                     {
                         Caption = sheet.Cells[rowNum, _view.ColumnCaption].Text,
                         Tag = sheet.Cells[rowNum, _view.ColumnTag].Text,

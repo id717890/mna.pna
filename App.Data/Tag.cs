@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MNA.Data
+namespace App.Data
 {
     public class Tag
     {
