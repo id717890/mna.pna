@@ -4,6 +4,6 @@
     {
         public static string Ok = "OK";
         public static string NotFound = "-";
-        public static string NotSingleResult = "??";
+        public static string NotSingleResult = "OK!";
     }
 }

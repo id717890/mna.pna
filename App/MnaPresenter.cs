@@ -57,7 +57,7 @@ namespace App
                         if (mnaNumber != -1)
                             count = excel.ToList().Count(
                                 x => x.Tag.ToLower() == string.Format(tag.FullName, mnaNumber).ToLower() 
-                                && x.Caption.ToLower() == tag.Caption.ToLower()
+                                && x.Caption.ToLower().Contains(tag.Caption.ToLower())
                                 && !x.Caption.ToLower().Contains("снят"));
                         else
                             count = excel.ToList().Count(
