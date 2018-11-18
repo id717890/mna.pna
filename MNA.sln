@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "MNA\App.csproj", "{3FBAC1A8-4074-4C42-99F2-7105A5C5D424}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{3FBAC1A8-4074-4C42-99F2-7105A5C5D424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Tests", "MNA.Tests\App.Tests.csproj", "{A87A7362-9EB1-441C-8B9B-AEE9B64275DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Tests", "App.Tests\App.Tests.csproj", "{A87A7362-9EB1-441C-8B9B-AEE9B64275DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Interface", "Interface\App.Interface.csproj", "{1E05B8E9-6C62-49C9-8B3F-D40B5BA424DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Interface", "App.Interface\App.Interface.csproj", "{1E05B8E9-6C62-49C9-8B3F-D40B5BA424DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Data", "App.Data\App.Data.csproj", "{61C8EDE9-1580-4744-B3F1-54981EED903A}"
 EndProject

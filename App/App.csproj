@@ -112,7 +112,7 @@
       <Project>{61c8ede9-1580-4744-b3f1-54981eed903a}</Project>
       <Name>App.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Interface\App.Interface.csproj">
+    <ProjectReference Include="..\App.Interface\App.Interface.csproj">
       <Project>{1e05b8e9-6c62-49c9-8b3f-d40b5ba424df}</Project>
       <Name>App.Interface</Name>
     </ProjectReference>
