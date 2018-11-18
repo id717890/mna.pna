@@ -43,6 +43,58 @@ namespace MNA
             SetCurrentMna(mna);
         }
 
+        private void FindTagInList(IEnumerable<Data.ExcelColumn> excel, IEnumerable<Tag> tags, int mnaNumber = -1)
+        {
+            if (tags !=null && tags.Any())
+            {
+                foreach (Tag tag in tags)
+                {
+                    if (tag.Checkable)
+                    {
+                        int count = 0;
+                        if (mnaNumber != -1)
+                            count = excel.ToList().Count(
+                                x => x.Tag.ToLower() == string.Format(tag.FullName, mnaNumber).ToLower() 
+                                && x.Caption.ToLower() == tag.Caption.ToLower()
+                                && !x.Caption.ToLower().Contains("снят"));
+                        else
+                            count = excel.ToList().Count(
+                                x => x.Tag.ToLower() == tag.FullName.ToLower() 
+                                && x.Caption.ToLower().Contains(tag.Caption.ToLower())
+                                && !x.Caption.ToLower().Contains("снят"));
+
+                        if (count == 1)
+                        {
+                            tag.Status = Status.Ok;
+                        }
+                        else if (count > 1)
+                        {
+                            tag.Status = Status.NotSingleResult;
+                        }
+                        else tag.Status = Status.NotFound;
+                    } else
+                    {
+                        int count = 0;
+                        if (mnaNumber != -1)
+                            count = excel.ToList().Count(
+                                x => x.Tag.ToLower() == string.Format(tag.FullName, mnaNumber).ToLower() && !x.Caption.ToLower().Contains("снят"));
+                        else
+                            count = excel.ToList().Count(x => x.Tag.ToLower() == tag.FullName.ToLower() && !x.Caption.ToLower().Contains("снят"));
+
+                        if (count == 1)
+                        {
+                            tag.Status = Status.Ok;
+                        }
+                        else if (count > 1)
+                        {
+                            tag.Status = Status.NotSingleResult;
+                        }
+                        else tag.Status = Status.NotFound;
+                    }
+                }
+            }
+        }
+
         private Tag FindTagInList(string tag, IEnumerable<Tag> tags)
         {
             try
@@ -57,7 +109,14 @@ namespace MNA
 
         private Tag FindTagInList(string tag, IEnumerable<Tag> tags, string mnaNumber)
         {
-            return tags.ToList().SingleOrDefault(x => string.Format(x.FullName, mnaNumber).ToLower() == tag.ToLower());
+            try
+            {
+                return tags.ToList().SingleOrDefault(x => string.Format(x.FullName, mnaNumber).ToLower() == tag.ToLower());
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void OnOpenExcelFile(string fileName)
@@ -71,16 +130,34 @@ namespace MNA
                 if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any()) allTags.AddRange(_model.CurrentMna.TsOther);
                 if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
                 //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
+
+                List<Data.ExcelColumn> excelRows = new List<Data.ExcelColumn>();
                 for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
                 {
-                    Tag findTag = _model.CurrentMna.TagWithNumber
-                        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
-                        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
-                    if (findTag != null)
+                    excelRows.Add(new Data.ExcelColumn
                     {
-                        findTag.Status = "OK";
-                    }
+                        Caption = sheet.Cells[rowNum, _view.ColumnCaption].Text,
+                        Tag = sheet.Cells[rowNum, _view.ColumnTag].Text,
+                    });
                 }
+                if (excelRows.Any())
+                {
+                    if (_model.CurrentMna.TagWithNumber) FindTagInList(excelRows, allTags, _view.MnaNumber);
+                    else FindTagInList(excelRows, allTags);
+                }
+
+
+
+                //for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
+                //{
+                //    Tag findTag = _model.CurrentMna.TagWithNumber
+                //        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
+                //        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
+                //    if (findTag != null)
+                //    {
+                //        findTag.Status = "OK";
+                //    }
+                //}
             }
             _view.RenderParametersGrid();
         }
@@ -137,15 +214,26 @@ namespace MNA
                                             if (ts != null)
                                             {
                                                 XAttribute captionTag = ts.Attribute("caption");
+                                                XAttribute checkableTag = ts.Attribute("checkable");
+                                                
                                                 var nameTag = ts.Value;
                                                 if ((captionTag != null) && (nameTag != null))
                                                 {
-                                                    tsSecurity.Add(new Tag()
+                                                    Tag newTag = new Tag()
                                                     {
                                                         Caption = captionTag.Value,
                                                         Name = nameTag,
                                                         FullName = mnaItem.BaseTag + "." + nameTag
-                                                    });
+                                                    };
+                                                    if (checkableTag != null && Boolean.Parse(checkableTag.Value))
+                                                    {
+                                                        newTag.Checkable = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        newTag.Checkable = false;
+                                                    }
+                                                    tsSecurity.Add(newTag);
                                                 }
                                             }
                                         }
@@ -166,15 +254,26 @@ namespace MNA
                                             if (ts != null)
                                             {
                                                 XAttribute captionTag = ts.Attribute("caption");
+                                                XAttribute checkableTag = ts.Attribute("checkable");
+
                                                 var nameTag = ts.Value;
                                                 if ((captionTag != null) && (nameTag != null))
                                                 {
-                                                    tsOther.Add(new Tag()
+                                                    Tag newTag = new Tag()
                                                     {
                                                         Caption = captionTag.Value,
                                                         Name = nameTag,
                                                         FullName = mnaItem.BaseTag + "." + nameTag
-                                                    });
+                                                    };
+                                                    if (checkableTag != null && Boolean.Parse(checkableTag.Value))
+                                                    {
+                                                        newTag.Checkable = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        newTag.Checkable = false;
+                                                    }
+                                                    tsOther.Add(newTag);
                                                 }
                                             }
                                         }
@@ -202,7 +301,7 @@ namespace MNA
                                                         Caption = captionTag.Value,
                                                         Name = nameTag,
                                                         FullName = mnaItem.BaseTag + "." + nameTag,
-                                                        Id = new Guid()
+                                                        Id = Guid.NewGuid()
                                                     });
                                                 }
                                             }

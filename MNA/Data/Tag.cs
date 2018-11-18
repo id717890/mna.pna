@@ -8,6 +8,7 @@ namespace MNA.Data
         public string Caption { get; set; }
         public string FullName { get; set; }
         public string Status { get; set; }
+        public bool Checkable { get; set; }
         public Guid Id { get; set; } 
     }
 }
