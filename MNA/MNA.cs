@@ -7,7 +7,7 @@ using App.Interface.View;
 using App.Interface.Presenter;
 using App.Interface.Model;
 
-namespace MNA
+namespace App
 {
     public partial class MNA : Form, IMnaView
     {

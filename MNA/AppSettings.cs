@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MNA
+namespace App
 {
     public class AppSettings
     {

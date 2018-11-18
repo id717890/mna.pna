@@ -2,7 +2,7 @@
 using App.Data;
 using App.Interface.Model;
 
-namespace MNA.Models
+namespace App.Models
 {
     public class MnaViewModel:IMnaViewModel
     {

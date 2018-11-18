@@ -1,4 +1,4 @@
-﻿namespace MNA
+﻿namespace App
 {
     partial class MNA
     {

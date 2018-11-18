@@ -7,8 +7,8 @@
     <ProjectGuid>{A87A7362-9EB1-441C-8B9B-AEE9B64275DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MNA.Tests</RootNamespace>
-    <AssemblyName>MNA.Tests</AssemblyName>
+    <RootNamespace>App.Tests</RootNamespace>
+    <AssemblyName>App.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -76,9 +76,9 @@
       <Project>{1e05b8e9-6c62-49c9-8b3f-d40b5ba424df}</Project>
       <Name>App.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MNA\MNA.csproj">
+    <ProjectReference Include="..\MNA\App.csproj">
       <Project>{3fbac1a8-4074-4c42-99f2-7105a5c5d424}</Project>
-      <Name>MNA</Name>
+      <Name>App</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

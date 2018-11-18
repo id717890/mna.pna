@@ -5,7 +5,7 @@ using App.Interface.View;
 using Moq;
 using App.Interface.Presenter;
 
-namespace MNA.Tests
+namespace App.Tests
 {
     [TestClass]
     public class MnaPresenterReadConfigMethodTests

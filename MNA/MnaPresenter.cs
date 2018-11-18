@@ -7,10 +7,10 @@ using App.Data;
 using App.Interface.Presenter;
 using App.Interface.View;
 using App.Interface.Model;
-using MNA.Models;
+using App.Models;
 using OfficeOpenXml;
 
-namespace MNA
+namespace App
 {
     public class MnaPresenterNew : IMnaPresenter, IMnaPresenterCallback
     {

@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using App.Interface.Presenter;
 
-namespace MNA
+namespace App
 {
     static class Program
     {

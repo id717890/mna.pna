@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using Ninject.Modules;
 
-namespace MNA
+namespace App
 {
     class CompositionRoot
     {
