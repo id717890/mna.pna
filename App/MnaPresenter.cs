@@ -217,6 +217,7 @@ namespace App
                                             {
                                                 XAttribute captionTag = ts.Attribute("caption");
                                                 XAttribute checkableTag = ts.Attribute("checkable");
+                                                XAttribute textTag = ts.Attribute("text");
                                                 
                                                 var nameTag = ts.Value;
                                                 if ((captionTag != null) && (nameTag != null))
@@ -235,6 +236,7 @@ namespace App
                                                     {
                                                         newTag.Checkable = false;
                                                     }
+                                                    if (textTag != null) newTag.Text = textTag.Value;
                                                     tsSecurity.Add(newTag);
                                                 }
                                             }
@@ -257,6 +259,7 @@ namespace App
                                             {
                                                 XAttribute captionTag = ts.Attribute("caption");
                                                 XAttribute checkableTag = ts.Attribute("checkable");
+                                                XAttribute textTag = ts.Attribute("text");
 
                                                 var nameTag = ts.Value;
                                                 if ((captionTag != null) && (nameTag != null))
@@ -275,6 +278,7 @@ namespace App
                                                     {
                                                         newTag.Checkable = false;
                                                     }
+                                                    if (textTag != null) newTag.Text = textTag.Value;
                                                     tsOther.Add(newTag);
                                                 }
                                             }
@@ -295,16 +299,20 @@ namespace App
                                             if (tu != null)
                                             {
                                                 XAttribute captionTag = tu.Attribute("caption");
+                                                XAttribute textTag = tu.Attribute("text");
+
                                                 var nameTag = tu.Value;
                                                 if ((captionTag != null) && (nameTag != null))
                                                 {
-                                                    tuCommand.Add(new Tag()
+                                                    var newTag = new Tag()
                                                     {
                                                         Caption = captionTag.Value,
                                                         Name = nameTag,
                                                         FullName = mnaItem.BaseTag + "." + nameTag,
                                                         Id = Guid.NewGuid()
-                                                    });
+                                                    };
+                                                    if (textTag != null) newTag.Text = textTag.Value;
+                                                    tuCommand.Add(newTag);
                                                 }
                                             }
                                         }
@@ -313,7 +321,6 @@ namespace App
                                     }
                                     #endregion
                                     model.Add(mnaItem);
-
                                 }
                             }
                         }

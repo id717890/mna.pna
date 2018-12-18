@@ -102,7 +102,7 @@ namespace App
                         dgParameters.Rows[rowNum - 1].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                         foreach (Tag tag in selectedMna.TsSecurity)
                         {
-                            dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
+                            dgParameters.Rows.Add(rowNum, string.Format(tag.Caption, MnaNumber), tag.Status);
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
@@ -120,7 +120,7 @@ namespace App
 
                         foreach (Tag tag in selectedMna.TsOther)
                         {
-                            dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
+                            dgParameters.Rows.Add(rowNum, string.Format(tag.Caption, MnaNumber), tag.Status);
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
@@ -139,7 +139,7 @@ namespace App
 
                         foreach (Tag tag in selectedMna.Tu)
                         {
-                            dgParameters.Rows.Add(rowNum, tag.Caption, tag.Status);
+                            dgParameters.Rows.Add(rowNum, string.Format(tag.Caption, MnaNumber), tag.Status);
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;

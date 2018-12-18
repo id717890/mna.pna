@@ -9,6 +9,7 @@ namespace App.Data
         public string FullName { get; set; }
         public string Status { get; set; }
         public bool Checkable { get; set; }
+        public string Text { get; set; }
         public Guid Id { get; set; } 
     }
 }
