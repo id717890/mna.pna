@@ -106,6 +106,13 @@ namespace App
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
+
+                            if (string.IsNullOrEmpty(tag.Name))
+                            {
+                                dgParameters.Rows[rowNum].Cells[0].Style.BackColor = Color.Silver;
+                                dgParameters.Rows[rowNum].Cells[1].Style.BackColor = Color.Silver;
+                                dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Silver;
+                            }
                             rowNum++;
                         }
                     }
@@ -124,6 +131,14 @@ namespace App
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
+
+                            if (string.IsNullOrEmpty(tag.Name))
+                            {
+                                dgParameters.Rows[rowNum].Cells[0].Style.BackColor = Color.Silver;
+                                dgParameters.Rows[rowNum].Cells[1].Style.BackColor = Color.Silver;
+                                dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Silver;
+                            }
+
                             rowNum++;
                         }
                     }
@@ -143,6 +158,14 @@ namespace App
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
+
+                            if (string.IsNullOrEmpty(tag.Name))
+                            {
+                                dgParameters.Rows[rowNum].Cells[0].Style.BackColor = Color.Silver;
+                                dgParameters.Rows[rowNum].Cells[1].Style.BackColor = Color.Silver;
+                                dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Silver;
+                            }
+
                             rowNum++;
                         }
                     }

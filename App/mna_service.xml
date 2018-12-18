@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdku_reader>
 	<to_object>
+		<object caption="НПС Шаим-2 - МНА" tag="AK.SIBNP.R_Uraj.NPS_Shaim2.MNA_{0}" position="06" numeric="true">
+			<ts_security caption="Агрегатные защиты">
+				<ts caption="Сработала агрегатная защита">AlmHeap</ts>
+				<ts caption="Невыполнение программы пуска/остановки">AlmHeap.AlarmProg</ts>
+				<ts caption="Авар. макс. температура подшипн/корпуса">AlmT.AlarmT</ts>
+				<ts caption="Аварийная максимальная вибрация">AlmVibr.AlarmMaxVibr</ts>
+				<ts caption="Авария от автоматики">AlarmAllAVT</ts>
+				<ts caption="Изменение положения вх/вых задвижки">AlmHeap.AlarmStatusSW</ts>
+				<ts caption="Макс. утечки торцевых уплотнений">AlmLeak.AlarmLeak</ts>
+				<ts caption="Минимальное давление масла">AlmPress.AlarmMinPLubr</ts>
+				<ts caption="Неисправность приборов защит"> </ts>
+				<ts caption="Нет связи с УСО">AlmHeap.OfflineUSO</ts>
+				<ts caption="Отключение по месту">AlmHeap.AlarmStop</ts>
+				<ts caption="Электрическая защита">AlmHeap.AlarmStopEZ</ts>
+			</ts_security>
+			<ts_other caption="Прочие защиты">
+				<ts caption="В автоматическом режиме"> </ts>
+				<ts caption="Телемеханический режим">Auto</ts>
+				<ts caption="в работе">ON</ts>
+				<ts caption="В резерве">Rez</ts>
+				<ts caption="Вкл/откл по каналу ТМ"> </ts>
+				<ts caption="Готов к дистанционному пуску">StatusContrl.Wait</ts>
+				<ts caption="Готов к дистанционному управлению"> </ts>
+				<ts caption="Идет программа остановки">Prog.Stop</ts>
+				<ts caption="Идет программа пуска">Prog</ts>
+				<ts caption="Наибольшая из вибpаций - возврат в норму" checkable="true">Vibr</ts>
+				<ts caption="Наибольшая из вибpаций - выход за аварийное максимальное  значение" checkable="true">Vibr</ts>
+				<ts caption="Неисправность цепей контроля ВВ">AlmHeap.AlarmSKMV</ts>
+				<ts caption="Неисправность цепей управления ВВ">AlmHeap.AlarmSUMV</ts>
+				<ts caption="Программа пуска 1">ProgNum.ProgNum1</ts>
+				<ts caption="Программа пуска 2">ProgNum.ProgNum2</ts>
+				<ts caption="пуск Входящая квитанция"> </ts>
+				<ts caption="пуск Исходящая квитанция"> </ts>
+				<ts caption="стоп Входящая квитанция"> </ts>
+				<ts caption="стоп Исходящая квитанция"> </ts>
+				<ts caption="Задвижка-1 закрыта">SW_1.Status.Close</ts>
+				<ts caption="Задвижка-1 открыта">SW_1.Status.Open</ts>
+				<ts caption="Задвижка-1 симуляция">SW_1.Sim</ts>
+				<ts caption="Задвижка-2 закрывается">SW_2.Status.ToClose</ts>
+				<ts caption="Задвижка-2 закрыта">SW_2.Status.Close</ts>
+				<ts caption="Задвижка-2 открыта">SW_2.Status.Open</ts>
+				<ts caption="Задвижка-2 симуляция">SW_2.Sim</ts>
+			</ts_other>
+			<tu_command caption="Телеуправление">
+				<tu caption="Магистральный агрегат №{0}. Пуск">TU.ON.Wvalue</tu>
+				<tu caption="Магистральный агрегат №{0}. Стоп">TU.OFF.Wvalue</tu>
+			</tu_command>
+		</object>
 		<object caption="НПС Крутое - МНА" tag="AK.SIBNP.R_Uraj.NPS_Krut.MNA_{0}" position="05" numeric="true">
 			<ts_security caption="Агрегатные защиты">
 				<ts caption="Электрическая защита">AlmHeap.AlarmStopEZ</ts>
