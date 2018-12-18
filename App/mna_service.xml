@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdku_reader>
 	<to_object>
-		<object caption="НПС Ягодное - МНА" tag="AK.SIBNP.R_Uraj.NPS_Jagod.MNA_{0}" position="1" numeric="true">
+		<object caption="НПС Крутое - МНА" tag="AK.SIBNP.R_Uraj.NPS_Krut.MNA_{0}" position="05" numeric="true">
+			<ts_security caption="Агрегатные защиты">
+				<ts caption="Электрическая защита">AlmHeap.AlarmStopEZ</ts>
+				<ts caption="Повышенная температура">AlmT.AlarmMaxT</ts>
+				<ts caption="Отключение с БРУ">AlmHeap.AlarmStopBRU</ts>
+				<ts caption="Отключение по месту">AlmHeap.AlarmStop</ts>
+				<ts caption="Нет напряжения в схеме управления">Heap.AlarmUSU</ts>
+				<ts caption="Неисправность подпорных вентиляторов">Heap.NeisVentPodp</ts>
+				<ts caption="Неисправность МВ">Heap.AlarmMV</ts>
+				<ts caption="Невыполнение команды пуска/останова">AlmHeap.AlarmPROG</ts>
+				<ts caption="Минимальное давление масла">AlmPress.AlarmMinPLubr</ts>
+				<ts caption="Минимальное давление воздуха в корпусе э/д">AlmPress.AlarmMinPAir</ts>
+				<ts caption="Минимальное давленение охлаждающей воды">AlmPress.AlarmMinPWater</ts>
+				<ts caption="Максимальные утечки торцевых уплотнений">AlmLeak.AlarmLeak</ts>
+				<ts caption="Авария">AlarmAllAVT</ts>
+				<ts caption="Аварийная вибрация">AlmVibr.AlarmMaxVibr</ts>
+				<ts caption="Недостоверность измерения температуры подшипников">AlmHeap.AlarmTRoller</ts>
+				<ts caption="Изменения положения входящих задвижек">AlmHeap.AlarmStatusSW</ts>		
+			</ts_security>
+			<ts_other caption="Прочие защиты">
+				<ts caption="ЦСПА МН СГП ТУ Конда-Платина. НПС «Крутое». МНА-{0}. Команда ТУ 'Установить маску'">Mask</ts>
+				<ts caption="ЦСПА МН СГП ТУ Конда-Платина. НПС «Крутое». МНА-{0}. Замаскирован">Mask</ts>
+				<ts caption="Остановлен">OFF</ts>
+				<ts caption="Величина вибрации агрегата - выход за аварийное максимальное  значение" checkable="true">Vibr</ts>
+				<ts caption="Величина вибрации агрегата - возврат в норму" checkable="true">Vibr</ts>
+				<ts caption="стоп Исходящая квитанция">TU.Off.Wvalue</ts>
+				<ts caption="пуск Исходящая квитанция">TU.On.Wvalue</ts>
+				<ts caption="в работе">On</ts>
+				<ts caption="Ремонт">Rem</ts>
+				<ts caption="Резерв">Rez</ts>
+				<ts caption="Идет программа пуска">Prog</ts>
+				<ts caption="Задвижка 2 Закрывается">SW_2.Status.ToClose</ts>
+				<ts caption="Задвижка 1 Закрывается">SW_1.Status.ToClose</ts>
+				<ts caption="Готов к дистанционному управлению">StatusContrl.DistContrl.DistContrl</ts>
+			</ts_other>
+			<tu_command caption="Телеуправление">
+				<tu caption="Магистральный агрегат №{0}. Пуск">TU.ON</tu>
+				<tu caption="Магистральный агрегат №{0}. Стоп">TU.OFF</tu>
+			</tu_command>
+		</object>
+		<object caption="НПС Ягодное - МНА" tag="AK.SIBNP.R_Uraj.NPS_Jagod.MNA_{0}" position="01" numeric="true">
 			<ts_security caption="Агрегатные защиты">
 				<ts caption="Сработала агрегатная защита 'Электрическая защита'">AlmHeap.AlarmStopEZ</ts>
 				<ts caption="Сработала агрегатная защита 'Повышенная температура'">AlmT.AlarmT</ts>
@@ -45,7 +85,7 @@
 				<tu caption="Магистральный агрегат №{0}. Стоп">TU.OFF</tu>
 			</tu_command>
 		</object>
-		<object caption="НПС Сосьва-2 - МНА" tag="AK.SIBNP.R_Uraj.NPS_Sosv2.MNA_{0}"  position="2" numeric="true">
+		<object caption="НПС Сосьва-2 - МНА" tag="AK.SIBNP.R_Uraj.NPS_Sosv2.MNA_{0}"  position="03" numeric="true">
 			<ts_security caption="Агрегатные защиты">
 				<ts caption="Аварийная макс. температура нефти корпуса насоса">AlmT.AlarmMaxTCorp</ts>
 				<ts caption="Аварийная максимальная вибрация насоса в нестационарном режиме МНА">AlmVibr.AlmVibrN</ts>
@@ -60,10 +100,10 @@
 				<ts caption="Аварийная максимальная температура обмоток статора электродвигателя">AlmT.AlarmMaxTDObStat</ts>
 				<ts caption="Аварийная максимальная температура подшипников насоса">AlmT.AlarmMaxTN</ts>
 				<ts caption="Аварийная максимальная температура подшипников электродвигателя">AlmT.AlarmMaxTD</ts>
-				<ts caption="Аварийное максимальное давление охлаждающей воды электродвигателя">AlmPress.AlarmMaxPColdWaterD</ts>
-				<ts caption="Аварийное минимальное давление воздуха в зоне клапана продувки">AlmPress.AlarmMinPAir</ts>
-				<ts caption="Аварийное минимальное давление воздуха в корпусе возбудителя">AlmPress.AlarmMinPAirCorp</ts>
-				<ts caption="Аварийное минимальное давление воздуха в корпусе ЭД">AlmPress.AlarmMinPAirD</ts>
+				<ts caption="Аварийное максимальное давление охлаждающей воды электродвигателя">AlmHeap.AlarmMaxPColdWaterD</ts>
+				<ts caption="Аварийное минимальное давление воздуха в зоне клапана продувки">AlmHeap.AlarmMinPAir</ts>
+				<ts caption="Аварийное минимальное давление воздуха в корпусе возбудителя">AlmHeap.AlarmMinPAirCorp</ts>
+				<ts caption="Аварийное минимальное давление воздуха в корпусе ЭД">AlmHeap.AlarmMinPAirD</ts>
 				<ts caption="Аварийное минимальное давление масла перед подшипниками">AlmPress.AlarmMinPLubr</ts>
 				<ts caption="Аварийное осевое смещение ротора насоса">AlmVibr.AlarmVibrNOs</ts>
 				<ts caption="Аварийное отключение агрегата кнопкой «Стоп» по месту">AlmHeap.AlarmStop</ts>
@@ -74,8 +114,8 @@
 				<ts caption="Невыполнение программы пуска агрегата">AlmHeap.AlarmProg</ts>
 				<ts caption="Недостоверность измерений вибрации в группе датчиков насоса МНА">AlmHeap.AlarmFailureVibrN</ts>
 				<ts caption="Недостоверность измерений вибрации в группе датчиков ЭД МНА">AlmHeap.AlarmFailureVibrD</ts>
-				<ts caption="Недостоверность измерений давления воздуха в корпусе возбудителя">AlmPress.AlarmBadPCorpV</ts>
-				<ts caption="Недостоверность измерений давления воздуха в корпусе электродвигателя">AlmPress.AlarmBadPCorpD</ts>
+				<ts caption="Недостоверность измерений давления воздуха в корпусе возбудителя">AlmHeap.AlarmBadPCorpV</ts>
+				<ts caption="Недостоверность измерений давления воздуха в корпусе электродвигателя">AlmHeap.AlarmBadPCorpD</ts>
 				<ts caption="Недостоверность измерений давления масла перед подшипниками">AlmPress.AlarmBadPLubr</ts>
 				<ts caption="Недостоверность измерений температуры корпуса насоса ">AlmHeap.AlarmFailureTCorp</ts>
 				<ts caption="Недостоверность измерений температуры подшипников насоса">AlmHeap.AlarmFailureTN</ts>
@@ -86,74 +126,121 @@
 				<ts caption="Несанкционированное отключение МНА">AlmHeap.AlarmOn</ts>
 				<ts caption="Отключение ВВ МНА от АЧР">AlmHeap.AlarmOffVVACR</ts>
 				<ts caption="Электрическая защита электродвигателя">AlmHeap.AlarmStopEZD</ts>
-				<ts caption="Сработала агрегатная защита"></ts>
+				<ts caption="Сработала агрегатная защита">AlarmAll</ts>
 			</ts_security>
 			<ts_other caption="Прочие защиты">
+				<ts caption="Максимальная величина вибрации МНА {0} - выход за аварийное максимальное  значение" checkable="true">Vibr</ts>
+				<ts caption="ВВ МНА отключен">AlarmVVOff</ts>
+				<ts caption="Неисправность цепей включения ВВ МНА (в т.ч. отсутствие питания цепей управления)">AlarmVVOn</ts>
+				<ts caption="Неисправность цепей контроля МНА">AlarmSU</ts>
+				<ts caption="Неисправность цепей отключения ВВ МНА (в т.ч. отсутствие питания цепей управления)">AlarmSUOff</ts>
 				<ts caption="ВВ МНА включен">AlarmVVOn</ts>
+				<ts caption="Аварии по вибрации">AlmVibr</ts>
+				<ts caption="Аварии по давлению">AlmPress</ts>
+				<ts caption="Аварии по температуре">AlmT</ts>
+				<ts caption="Аварии по утечкам">AlmLeak</ts>
+				<ts caption="Аварийно-максимальная вибрация подшипников насоса">AlmVibr.AlmVibrN</ts>
+				<ts caption="В работе">On</ts>
+				<ts caption="В режимеосновной">Auto</ts>
+				<ts caption="В режимерезервный">Rez</ts>
+				<ts caption="В режимеремонтный">Rem</ts>
+				<ts caption="В режиметелемеханический">StatusContrl.Distcontrl</ts>
+				<ts caption="В состояниигорячий резерв">HotRez</ts>
+				<ts caption="Включен режим имитации">TestMode</ts>
+				<ts caption="Готов к пуску">StatusContrl.Wait</ts>
+				<ts caption="Запускается">ToOn</ts>
+				<ts caption="Идет программа остановки">ProgStop</ts>
+				<ts caption="Идет программа пуска">Prog</ts>
+				<ts caption="Останавливается">ToOff</ts>
+				<ts caption="Остановлен">Off</ts>
+				<ts caption="Программа пуска П1">ProgNum.Prog1</ts>
+				<ts caption="Программа пуска П2">ProgNum.Prog2</ts>
+				<ts caption="Прочие аварии">AlmHeap</ts>
+				<ts caption="пуск по ТМ Исходящая квитанция">TU.On.wvalue</ts>
+				<ts caption="стоп по ТМ Исходящая квитанция">TU.Off.wvalue</ts>
+				<ts caption="ТУ: Стоп по ТМ Входящая квитанция"> </ts>
+				<ts caption="Количество пусков электродвигателя агрегата - выход за аварийное максимальное  значение" checkable="true">SERVICE.NARAB.PowerMotor</ts>
+				<ts caption="Количество пусков электродвигателя агрегата - выход за предельное максимальное  значениее" checkable="true">SERVICE.NARAB.PowerMotor</ts>
+				<ts caption="Задвижка 1 Авария задвижки">SW_1.StatusContrl.AlarmAll.Alarm</ts>
+				<ts caption="Задвижка 1 В промежуточном положении">SW_1.Status.Middle</ts>
+				<ts caption="Задвижка 1 Включен режим имитации">SW_1.Sim</ts>
+				<ts caption="Задвижка 1 закрывается">SW_1.Status.ToClose</ts>
+				<ts caption="Задвижка 1 закрыта">SW_1.Status.Close</ts>
+				<ts caption="Задвижка 1 Невыполнение команды на стоп">SW_1.StatusContrl.AlarmAll.NotStop</ts>
+				<ts caption="Задвижка 1 открывается">SW_1.Status.ToOpen</ts>
+				<ts caption="Задвижка 1 открыта">SW_1.Status.Open</ts>
+				<ts caption="Задвижка 2 В промежуточном положении">SW_2.Status.Middle</ts>
+				<ts caption="Задвижка 2 Включен режим имитации">SW_2.Sim</ts>
+				<ts caption="Задвижка 2 закрывается">SW_2.Status.ToClose</ts>
+				<ts caption="Задвижка 2 закрыта">SW_2.Status.Close</ts>
+				<ts caption="Задвижка 2 Невыполнение команды на стоп">SW_2.StatusContrl.AlarmAll.NotStop</ts>
+				<ts caption="Задвижка 2 открывается">SW_2.Status.ToOpen</ts>
+				<ts caption="МНА-2 Задвижка 2 открыта">SW_2.Status.Open</ts>
+				<ts caption="Режим работы МНА 3 (1 - вне РИП/0 - в РИП)">RegimMNA</ts>
 			</ts_other>
 			<tu_command caption="Телеуправление">
-				<tu caption="Магистральный агрегат №2. Пуск">TU.ON</tu>
-				<tu caption="Магистральный агрегат №2. Стоп">TU.OFF</tu>
+				<tu caption="Магистральный агрегат №2. Пуск">TU.On.wvalue</tu>
+				<tu caption="Магистральный агрегат №2. Стоп">TU.OFF.wvalue</tu>
 			</tu_command>
 		</object>
-		<object caption="НПС Сосьва-1 - МНА" tag="AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_{0}"  position="3">
-			<ts_security caption="Станционные защиты">
-				<ts caption="Аварийная вибрация подшипников">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmVibr.AlarmVibrPod</ts>
-				<ts caption="Аварийная температура подшипников">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmT.AlarmTRoller</ts>
-				<ts caption="Аварийное отключение агрегата кнопкой с БРУ">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmStopBRU</ts>
-				<ts caption="Аварийное отключение агрегата эл.защитой">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmStopEZ</ts>
-				<ts caption="Аварийное смещение ротора">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmRPump</ts>
-				<ts caption="Аварийный максимальный уровень утечек">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmLeak.AlarmLeak</ts>
-				<ts caption="Авария агрегата">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlarmAllAVT</ts>
-				<ts caption="Максимальное давление охлаждающей воды">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmPress.AlarmMaxPWater</ts>
-				<ts caption="Минимальное давление охлаждающей воды">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmPress.AlarmMinPWater</ts>
-				<ts caption="Минимальное давление подпора в корпусе ЭД">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmPress.AlarmMinPED</ts>
-				<ts caption="Минимальное давления масла">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmPress.AlarmMinPLubr</ts>
-				<ts caption="Невыполнение команды пуска/останова">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmPROG</ts>
-				<ts caption="Несанкционированное изменение состояния агр задв">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmStatusSW</ts>
-				<ts caption="Отключение агрегата кнопкой по месту">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmStop</ts>				
+		<object caption="НПС Сосьва-1 - МНА" tag="AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_{0}"  position="02" numeric="true">
+			<ts_security caption="Агрегатные защиты">
+				<ts caption="Аварийная вибрация подшипников">AlmVibr.AlarmVibrPod</ts>
+				<ts caption="Аварийная температура подшипников">AlmT.AlarmTRoller</ts>
+				<ts caption="Аварийное отключение агрегата кнопкой с БРУ">AlmHeap.AlarmStopBRU</ts>
+				<ts caption="Аварийное отключение агрегата эл.защитой">AlmHeap.AlarmStopEZ</ts>
+				<ts caption="Аварийное смещение ротора">AlmHeap.AlarmRPump</ts>
+				<ts caption="Аварийный максимальный уровень утечек">AlmLeak.AlarmLeak</ts>
+				<ts caption="Авария агрегата">AlarmAllAVT</ts>
+				<ts caption="Максимальное давление охлаждающей воды">AlmPress.AlarmMaxPWater</ts>
+				<ts caption="Минимальное давление охлаждающей воды">AlmPress.AlarmMinPWater</ts>
+				<ts caption="Минимальное давление подпора в корпусе ЭД">AlmPress.AlarmMinPED</ts>
+				<ts caption="Минимальное давления масла">AlmPress.AlarmMinPLubr</ts>
+				<ts caption="Невыполнение команды пуска/останова">AlmHeap.AlarmPROG</ts>
+				<ts caption="Несанкционированное изменение состояния агр задв">AlmHeap.AlarmStatusSW</ts>
+				<ts caption="Отключение агрегата кнопкой по месту">AlmHeap.AlarmStop</ts>				
 			</ts_security>
 			<ts_other caption="Прочие защиты">
-				<ts caption="ЦСПА. НПС Сосьва-1. МНА-4. В работе">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.ON</ts>
-				<ts caption="ЦСПА. НПС Сосьва-1. МНА-4. Отключен">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.OFF</ts>
-				<ts caption="Агрегат в процессе пуска">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Prog</ts>
-				<ts caption="В горячем резерве">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.HotRez</ts>
-				<ts caption="Готов к дистанционному управлению">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.StatusContrl.DistContrl</ts>
-				<ts caption="Готов к пуску">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.StatusContrl.Wait</ts>
-				<ts caption="Задвижка 1 в промежуточном положении">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.Status.Middle</ts>
-				<ts caption="Задвижка 1.  Питание подано">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.Ucontrol</ts>
-				<ts caption="Задвижка 1.  закрывается">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.Status.ToClose</ts>
-				<ts caption="Задвижка 1.  закрыта">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.Status.Close</ts>
-				<ts caption="Задвижка 1.  открывается">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.Status.ToOpen</ts>
-				<ts caption="Задвижка 1.  открыта">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.Status.Open</ts>
-				<ts caption="Задвижка 1.  симуляция">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_1.SIM</ts>
-				<ts caption="Задвижка 2 в промежуточном положении">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.Status.Middle</ts>
-				<ts caption="Задвижка 2.  Питание подано">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.Ucontrol</ts>
-				<ts caption="Задвижка 2.  закрывается">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.Status.ToClose</ts>
-				<ts caption="Задвижка 2.  закрыта">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.Status.Close</ts>
-				<ts caption="Задвижка 2.  открывается">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.Status.ToOpen</ts>
-				<ts caption="Задвижка 2.  открыта">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.Status.Open</ts>
-				<ts caption="Задвижка 2.  симуляция">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.SW_2.SIM</ts>
-				<ts caption="Испытательный">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.TestMode</ts>
-				<ts caption="Неисправность цепей управления масляного выключателя">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmSUMV</ts>
-				<ts caption="Отказ программы пуска">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.ProgStop</ts>
-				<ts caption="Программа пуска П1">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Prog1</ts>
-				<ts caption="Программа пуска П2">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Prog2</ts>
-				<ts caption="Режим автоматический основной">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Auto</ts>
-				<ts caption="Режим автоматический резервный">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Rez</ts>
-				<ts caption="Режим кнопочный">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.BUT</ts>
-				<ts caption="Ремонтный">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Rem</ts>
-				<ts caption="в работе">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.ON</ts>
-				<ts caption="пуск Исходящая квитанция">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.TU.ON.wvalue</ts>
-				<ts caption="стоп Исходящая квитанция">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.TU.OFF.wvalue</ts>
-				<ts caption="Неисправность цепей управления масляного выключателя">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmSUMV</ts>
-				<ts caption="Несанкционированное изменение состояния ВВ">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmStatusVV</ts>
-				<ts caption="Отсутствие напряжения в схеме управления">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.AlmHeap.AlarmUS</ts>
-				<ts caption="Вибрация - возврат в норму" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Vibr</ts>
-				<ts caption="Вибрация - выход за аварийное максимальное  значение" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Vibr</ts>
-				<ts caption="Сила тока магистрального агрегата - возврат в норму" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Current</ts>
-				<ts caption="Сила тока магистрального агрегата - выход за аварийное максимальное  значение" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.Current</ts>
-				<ts caption="МНА №4 Остановлен" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.OFF</ts>
+				<ts caption="ЦСПА. НПС Сосьва-1. МНА-4. В работе">ON</ts>
+				<ts caption="ЦСПА. НПС Сосьва-1. МНА-4. Отключен">OFF</ts>
+				<ts caption="Агрегат в процессе пуска">Prog</ts>
+				<ts caption="В горячем резерве">HotRez</ts>
+				<ts caption="Готов к дистанционному управлению">StatusContrl.DistContrl</ts>
+				<ts caption="Готов к пуску">StatusContrl.Wait</ts>
+				<ts caption="Задвижка 1 в промежуточном положении">SW_1.Status.Middle</ts>
+				<ts caption="Задвижка 1.  Питание подано">SW_1.Ucontrol</ts>
+				<ts caption="Задвижка 1.  закрывается">SW_1.Status.ToClose</ts>
+				<ts caption="Задвижка 1.  закрыта">SW_1.Status.Close</ts>
+				<ts caption="Задвижка 1.  открывается">SW_1.Status.ToOpen</ts>
+				<ts caption="Задвижка 1.  открыта">SW_1.Status.Open</ts>
+				<ts caption="Задвижка 1.  симуляция">SW_1.SIM</ts>
+				<ts caption="Задвижка 2 в промежуточном положении">SW_2.Status.Middle</ts>
+				<ts caption="Задвижка 2.  Питание подано">SW_2.Ucontrol</ts>
+				<ts caption="Задвижка 2.  закрывается">SW_2.Status.ToClose</ts>
+				<ts caption="Задвижка 2.  закрыта">SW_2.Status.Close</ts>
+				<ts caption="Задвижка 2.  открывается">SW_2.Status.ToOpen</ts>
+				<ts caption="Задвижка 2.  открыта">SW_2.Status.Open</ts>
+				<ts caption="Задвижка 2.  симуляция">SW_2.SIM</ts>
+				<ts caption="Испытательный">TestMode</ts>
+				<ts caption="Неисправность цепей управления масляного выключателя">AlmHeap.AlarmSUMV</ts>
+				<ts caption="Отказ программы пуска">ProgStop</ts>
+				<ts caption="Программа пуска П1">Prog1</ts>
+				<ts caption="Программа пуска П2">Prog2</ts>
+				<ts caption="Режим автоматический основной">Auto</ts>
+				<ts caption="Режим автоматический резервный">Rez</ts>
+				<ts caption="Режим кнопочный">BUT</ts>
+				<ts caption="Ремонтный">Rem</ts>
+				<ts caption="в работе">ON</ts>
+				<ts caption="пуск Исходящая квитанция">TU.ON.wvalue</ts>
+				<ts caption="стоп Исходящая квитанция">TU.OFF.wvalue</ts>
+				<ts caption="Неисправность цепей управления масляного выключателя">AlmHeap.AlarmSUMV</ts>
+				<ts caption="Несанкционированное изменение состояния ВВ">AlmHeap.AlarmStatusVV</ts>
+				<ts caption="Отсутствие напряжения в схеме управления">AlmHeap.AlarmUS</ts>
+				<ts caption="Вибрация - возврат в норму" checkable="true">Vibr</ts>
+				<ts caption="Вибрация - выход за аварийное максимальное  значение" checkable="true">Vibr</ts>
+				<ts caption="Сила тока магистрального агрегата - возврат в норму" checkable="true">Current</ts>
+				<ts caption="Сила тока магистрального агрегата - выход за аварийное максимальное  значение" checkable="true">Current</ts>
+				<ts caption="МНА №4 Остановлен" checkable="true">OFF</ts>
 				<ts caption="Давление на выходе агрегата. Прямой ход (кг/см2)"> </ts>
 				<ts caption="Давление на выходе агрегата. Обратный ход ( кг-с/см2)"> </ts>
 				<ts caption="Вибрация. Прямой ход ( мм/сек)"> </ts>
@@ -172,9 +259,148 @@
 				<ts caption="Температура  горячего воздуха на выходе ВО №2. Обратный ход (град.)"> </ts>						
 			</ts_other>
 			<tu_command caption="Телеуправление">
-				<ts caption="Магистральный агрегат №   4. Пуск" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.TU.ON.wvalue</ts>
-				<ts caption="Магистральный агрегат №   4. Стоп" checkable="true">AK.SIBNP.R_Uraj.NPS_Sosv1.MNA_4.TU.OFF.wvalue</ts>
+				<tu caption="Магистральный агрегат. Пуск" checkable="true">TU.ON.wvalue</tu>
+				<tu caption="Магистральный агрегат. Стоп" checkable="true">TU.OFF.wvalue</tu>
 			</tu_command>
+		</object>
+		<object caption="НПС Сосновка - МНА" tag="AK.SIBNP.R_Uraj.NPS_Sosn.MNA_{0}"  position="04" numeric="true">
+			<ts_security caption="Агрегатные защиты">
+				<ts caption="Аварийная максимальная вибрация насоса в нестационарном режиме">AlmVibr.AlmVibrN.AlarmVibrNNest</ts>
+				<ts caption="Аварийная максимальная вибрация насоса в стац. режиме в раб. интервале подач Порог 1">AlmVibr.AlmVibrN.AlarmVibrIntN1</ts>
+				<ts caption="Аварийная максимальная вибрация насоса в стац. режиме вне раб. интервала подач Порог 1">AlmVibr.AlmVibrN.AlarmVibrOutIntN1</ts>
+				<ts caption="Аварийная максимальная вибрация насоса Порог 2">AlmVibr.AlmVibrN.AlarmVibrN2</ts>
+				<ts caption="Аварийная максимальная вибрация ЭД в нестационарном режиме">AlmVibr.AlarmVibrDNest</ts>
+				<ts caption="Аварийная максимальная вибрация ЭД в стационарном режиме Порог 1">AlmVibr.AlarmVibrD1</ts>
+				<ts caption="Аварийная максимальная вибрация ЭД Порог 2">AlmVibr.AlarmVibrD2</ts>
+				<ts caption="Аварийная максимальная температура горячего воздуха на выходе из статора ЭД">AlmT.AlarmMaxTHotAirD</ts>
+				<ts caption="Аварийная максимальная температура заднего подшипника насоса">AlmT.AlarmMaxTNZ</ts>
+				<ts caption="Аварийная максимальная температура заднего подшипника ЭД">AlmT.AlarmMaxTDZ</ts>
+				<ts caption="Аварийная максимальная температура корпуса насоса">AlmT.AlarmMaxTCorp</ts>
+				<ts caption="Аварийная максимальная температура масла на сливе из подшипников ЭД (не на всех МНА)">AK.SIBNP.R_Uraj.NPS_Sosn.MNA_4.AlmT.AlarmMaxTRollerD</ts>
+				<ts caption="Аварийная максимальная температура обмоток статора ЭД">AlmT.AlarmMaxTObStat</ts>
+				<ts caption="Аварийная максимальная температура переднего подшипника ЭД">AlmT.AlarmMaxTDP</ts>
+				<ts caption="Аварийная максимальная температура сердечника статора ЭД">AlmT.AlarmMaxTSerStat</ts>
+				<ts caption="Аварийная максимальная температура холодного воздуха в корпусе ЭД">AlmT.AlarmMaxTColdAirD</ts>
+				<ts caption="Аварийное максимальное давление охлаждающей воды ЭД">AlmPress.AlarmMaxPColdWaterD</ts>
+				<ts caption="Аварийное минимальное давление воздуха в зоне клапана продувки (не на всех МНА)">AK.SIBNP.R_Uraj.NPS_Sosn.MNA_4.AlmPress.AlarmMinPAir</ts>
+				<ts caption="Аварийное минимальное давление масла принудительной системы смазки">AlmPress.AlarmMinPLubr</ts>
+				<ts caption="Аварийное минимальное избыточное давление воздуха в корпусе возбудителя">AlmPress.AlarmMinPCorpV</ts>
+				<ts caption="Аварийное минимальное избыточное давление воздуха в корпусе ЭД">AlmPress.AlarmMinPCorpD</ts>
+				<ts caption="Аварийное осевое смещение ротора насоса">AlmVibr.AlarmVibrNOs</ts>
+				<ts caption="Аварийное отключение агрегата кнопкой «Стоп» с БРУ">AlmHeap.AlarmStopBRU</ts>
+				<ts caption="Аварийные утечки нефти через торцовое уплотнение насоса">AlmLeak.AlarmLeak</ts>
+				<ts caption="Недостоверность измерений вибрации в группе датчиков насоса">AlmVibr.AlarmBadVibrN</ts>
+				<ts caption="Недостоверность измерений вибрации в группе датчиков электродвигателя">AlmVibr.AlarmBadVibrD</ts>
+				<ts caption="Недостоверность измерений давления масла принудительной системы смазки">AlmPress.AlarmBadPLubr</ts>
+				<ts caption="Недостоверность измерений температуры заднего подшипника насоса">AlmT.AlarmBadTNZ</ts>
+				<ts caption="Недостоверность измерений температуры заднего подшипника ЭД">AlmT.AlarmBadTDZ</ts>
+				<ts caption="Недостоверность измерений температуры корпуса насоса">AlmT.AlarmBadTCorp</ts>
+				<ts caption="Недостоверность измерений температуры масла на сливе из подшипников ЭД (не на всех МНА)">AK.SIBNP.R_Uraj.NPS_Sosn.MNA_4.AlmT.AlarmBadTRollerD</ts>
+				<ts caption="Недостоверность измерений температуры переднего подшипника ЭД">AlmT.AlarmBadTDP</ts>
+				<ts caption="Недостоверность измерений температуры холодного воздуха в корпусе ЭД">AlmT.AlarmBadTColdAirD</ts>
+				<ts caption="Недостоверность измерения давления воздуха в корпусе возбудителя">AlmPress.AlarmBadPCorpV</ts>
+				<ts caption="Недостоверность измерения давления воздуха в корпусе ЭД">AlmPress.AlarmBadPCorpD</ts>
+				<ts caption="Несанкционированное отключение">AK.SIBNP.R_Uraj.NPS_Sosn.MNA_4.AlmHeap.AlarmOff</ts>
+				<ts caption="Подпорная вентиляция ЭД не работает">AlmHeap.NoWorkPodpor</ts>
+				<ts caption="Электрическая защита ЭД">AlmHeap.AlarmStopEZD</ts>
+				<ts caption="Сработала агрегатная защита">AlarmAll</ts>
+			</ts_security>
+			<ts_other caption="Прочие защиты">
+				<ts caption="МН СГП. ТУ Конда-Платина. ЦСПА. НПС Сосновка. МНА-2. В работе">Status.Off</ts>
+				<ts caption="МН СГП. ТУ Конда-Платина. ЦСПА. НПС Сосновка. МНА-2. Отключен">Status.Off</ts>
+				<ts caption="Аварии по вибрации">AlmVibr</ts>
+				<ts caption="Аварии по давлению">AlmPress</ts>
+				<ts caption="Аварии по температуре">AlmT</ts>
+				<ts caption="Аварии по утечкам">AlmLeak</ts>
+				<ts caption="Аварийно-максимальная вибрация подшипников насоса">AlmVibr.AlmVibrN</ts>
+				<ts caption="В работе">On</ts>
+				<ts caption="Готов к пуску">StatusContrl.Wait</ts>
+				<ts caption="Задвижка 1 включен режим имитации">SW_1.Sim</ts>
+				<ts caption="Задвижка 1 закрывается">SW_1.Status.ToClose</ts>
+				<ts caption="Задвижка 1 закрыта">SW_1.Status.Close</ts>
+				<ts caption="Задвижка 1 открывается">SW_1.Status.ToOpen</ts>
+				<ts caption="Задвижка 1 открыта">SW_1.Status.Open</ts>
+				<ts caption="Задвижка 2 включен режим имитации">SW_2.Sim</ts>
+				<ts caption="Задвижка 2 закрывается">SW_2.Status.ToClose</ts>
+				<ts caption="Задвижка 2 закрыта">SW_2.Status.Close</ts>
+				<ts caption="Задвижка 2 открывается">SW_2.Status.ToOpen</ts>
+				<ts caption="Задвижка 2 открыта">SW_2.Status.Open</ts>
+				<ts caption="Максимальная из всех контролируемых точек величина вибрации - выход за аварийное максимальное  значение">Vibr</ts>
+				<ts caption="Максимальная из всех контролируемых точек величина вибрации э/д - выход за аварийное максимальное  значение">VibrD</ts>
+				<ts caption="Неисправность цепей включения">AlarmSUOn</ts>
+				<ts caption="Неисправность цепей отключения">AlarmSUOff</ts>
+				<ts caption="Остановлен">Off</ts>
+				<ts caption="Программный останов агрегата">AK.SIBNP.R_Uraj.NPS_Sosn.MNA_4.ProgStop</ts>
+				<ts caption="Программный пуск агрегата">AK.SIBNP.R_Uraj.NPS_Sosn.MNA_4.Prog</ts>
+				<ts caption="Прочие аварии">AlmHeap</ts>
+				<ts caption="Режим «Имитации»">TestMode</ts>
+				<ts caption="Режим «Основной»">Auto</ts>
+				<ts caption="Режим «Ремонтный»">Rem</ts>
+				<ts caption="Режим работы МНА вне рабочего интервала подач">OutInterval</ts>
+				<ts caption="Сила тока - возврат в норму">Current</ts>				
+			</ts_other>
+			<tu_command caption="Телеуправление">
+				<tu caption="Магистральный агрегат. Пуск" checkable="true">TU.ON.wvalue</tu>
+				<tu caption="Магистральный агрегат. Стоп" checkable="true">TU.OFF.wvalue</tu>
+			</tu_command>
+		</object>
+		<object caption="НПС Березовое-1 - станционные защиты" tag="AK.SIBNP.R_Uraj.NPS_Berez1"  position="29">
+			<ts_security caption="Станционные защиты">
+				<ts caption="Общестанционная защита">AlarmAllStop</ts>
+				<ts caption="Авар. макс. уровень в маслобаках">AlarmAllStop.AlarmMaxLevelLubr</ts>
+				<ts caption="Аварийное отключение МНС по команде ЦСПА">AlarmAllStop.StopCSPA</ts>
+				<ts caption="Аварийное отключение по месту">AlarmAllStop.AlarmStop</ts>
+				<ts caption="Высокое давление в коллекторе">AlarmAllStop.AlarmPcol</ts>
+				<ts caption="Высокое давление на выходе НПС">AlarmAllStop.AlarmMaxPout</ts>
+				<ts caption="Загазованность">AlarmAllStop.AlarmGaas</ts>
+				<ts caption="Затопление общего укрытия">AlarmAllStop.AlarmSink.AlarmSink</ts>
+				<ts caption="Мин. уровень в аккум. Маслобаке">AlarmAllStop.AlarmMinLevelLubr</ts>
+				<ts caption="Низкое давление на входе НПС">AlarmAllStop.AlarmMinPIn</ts>
+				<ts caption="Отключена по давлению второй ступени">AlarmAllStop.AlarmStopP</ts>
+				<ts caption="Отключение 1-го по ходу">AlarmAllStop.AlarmStop1</ts>
+				<ts caption="Переполнение сборника утечек">AlarmAllStop.AlarmMaxOilLevel</ts>
+				<ts caption="Пожар">AlarmAllStop.AlarmFire</ts>
+			</ts_security>
+			<ts_other caption="Прочие защиты">
+				<ts caption="ЦСПА. НПС Березовое-1. В работе"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Давление на входе НПС. Давление в норме"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Давление на входе НПС. Недостоверное давление"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Давление на выходе НПС. Давление в норме"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Давление на выходе НПС. Недостоверное давление"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Не в работе"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Не отсечена"> </ts>
+				<ts caption="ЦСПА. НПС Березовое-1. Отсечена"> </ts>
+				<ts caption="Наличие напряжения на шинах ввод 1">ZRU.AlarmUSH1</ts>
+				<ts caption="Наличие напряжения на шинах ввод 2">ZRU.AlarmUSH2</ts>
+				<ts caption="Положение вводных переключателей ввод 1">ZRU.VVOn1</ts>
+				<ts caption="Положение вводных переключателей ввод 2">ZRU.VVOn2</ts>
+				<ts caption="Уровень нефти в ёмкости РГС-100 №5 сборника нефти ССВД V=100м3 - возврат в норму" checkable="true">DE7.Level</ts>
+				<ts caption="Авария">Signal_NPS.Alarm</ts>
+				<ts caption="Верхний уровень в  манифольде">DE7.Level33</ts>
+				<ts caption="Вспом. системы включены">VSYS.ON</ts>
+				<ts caption="Давление в коллекторе - возврат в норму" checkable="true">Pcol</ts>
+				<ts caption="Давление в коллекторе - выход за предельное максимальное  значениее" checkable="true">Pcol</ts>
+				<ts caption="Давление на входе МНС - возврат в норму" checkable="true">Pin</ts>
+				<ts caption="Давление на входе МНС - выход за аварийное минимальное значение" checkable="true">Pin</ts>
+				<ts caption="Давление на выходе НПС - возврат в норму" checkable="true">Pout</ts>
+				<ts caption="Давление на выходе предыдущей по ходу нефти НПС - выход за аварийное максимальное  значение" checkable="true">StopNPS.Pout</ts>
+				<ts caption="Модуль BMX NOM 0200  (поз. 4) - исправен">Signal_NPS.AlarmMod4</ts>
+				<ts caption="Модуль BMX NOR 0200  (поз. 1) - исправен">Signal_NPS.AlarmMod1</ts>
+				<ts caption="Насос откачки утечек включен">PUMP.ON</ts>
+				<ts caption="Неисправность вспом. систем">Signal_NPS.AlarmVDevice</ts>
+				<ts caption="Неисправность вспом. сооружений">Signal_NPS.AlarmVSoor</ts>
+				<ts caption="Неисправность сист. Пенопожаротушения"> </ts>
+				<ts caption="Нижний уровень в манифольде">DE7.Level22</ts>
+				<ts caption="НПС проходящее давление на входе УПС СП - возврат в норму" checkable="true">PpassInSGP</ts>
+				<ts caption="Перепад давление на ФГУ - выход за аварийное минимальное значение" checkable="true">DeltaPF</ts>
+				<ts caption="Перепад давления на РД - возврат в норму" checkable="true">AlarmAll.AlarmMaxRegDelta</ts>
+				<ts caption="Режим управления НПС дистанц">DistContrl</ts>
+				<ts caption="Систс. глаж. волны давления откл">SSVD.OFF</ts>
+				<ts caption="Температура масла к подшипникам МНА - возврат в норму" checkable="true">Tlubr</ts>
+				<ts caption="Температура охлажд. воды к э.д - возврат в норму" checkable="true">Twater</ts>
+				<ts caption="ТУ: вспом. системы стоп Входящая квитанция" checkable="true">VSYS.TU.OFF.Wvalue</ts>
+				<ts caption="РДП Урай. ЦСПА МН СГП ТУ Конда-Платина. НПС Березовое-1. Давление на выходе. Маска установлена.">Pin.Mask</ts>			
+			</ts_other>
 		</object>
 		<object caption="НПС Березовое-2 - станционные защиты" tag="AK.SIBNP.R_Uraj.NPS_Berez2"  position="30">
 			<ts_security caption="Станционные защиты">
@@ -285,6 +511,51 @@
 				<ts caption="Суммарный сигнал: Авария">AlarmAll</ts>
 				<ts caption="Схема включения МНС (0-последовательная, 1-параллельная)">MNSSerialParallel</ts>
 				<ts caption="Угроза перекрытия потока">AlarmAll.AlarmPotok</ts>				
+			</ts_other>
+		</object>
+		<object caption="НПС Крутое - станционные защиты" tag="AK.SIBNP.R_Uraj.NPS_Krut"  position="31">
+			<ts_security caption="Станционные защиты">
+				<ts caption="Предельный перепад на регуляторах давления">AlarmAll.AlarmMaxRegDelta</ts>
+				<ts caption="Пожар">AlarmAllStop.AlarmFire</ts>
+				<ts caption="Повышенная загазованность">AlarmAllStop.AlarmGaasLong</ts>
+				<ts caption="Переполнение в емкостях сбора утечек">AlarmAllStop.AlarmMaxOilLevel</ts>
+				<ts caption="Нет связи с УСО">AlarmAllStop.AlarmUSO</ts>
+				<ts caption="Затопление общего укрытия">AlarmAllStop.AlarmSink.AlarmSink</ts>
+				<ts caption="Затопление маслоблока">AlarmAllStop.AlarmSink.AlarmSinkLubr</ts>
+				<ts caption="Высокое давление на выходе">AlarmAllStop.AlarmMaxPout</ts>
+				<ts caption="Высокое давление в коллекторе">AlarmAllStop.AlarmMaxPcol</ts>
+				<ts caption="Авария вспомсистем">AlarmAllStop.AlarmSuppl</ts>
+				<ts caption="Аварийное отключение МНС по команде ЦСПА">AlarmAllStop.AlarmStop.AlarmStopCSPA</ts>
+				<ts caption="Аварийное отключение по месту">AlarmAllStop.AlarmStop.AlarmStopUkr</ts>
+				<ts caption="Аварийное отключение из операторной">AlarmAllStop.AlarmStop.AlarmStopOper</ts>
+				<ts caption="Аварийное отключение НПС кнопкой с БРУ в операторной">AlarmAllStop.AlarmStop.AlarmStopBRU</ts>
+				<ts caption="Аварийное максимальное проходящее давление на остановленной НПС ХК">AlarmAllStop.AlarmMaxPpassHK</ts>
+				<ts caption="Аварийное максимальное проходящее давление на остановленной НПС СГП">AlarmAllStop.AlarmMaxPpassSGP</ts>
+				<ts caption="Высокое давление на выходе">AlarmAllStop.AlarmMaxPout</ts>
+				<ts caption="Низкое давление на входе">AlarmAllStop.AlarmMinPIn</ts>
+				<ts caption="Высокое давление в коллекторе">AlarmAllStop.AlarmMaxPcol</ts>
+				<ts caption="Максимальный уровень в маслобаках">AlarmAllStop.AlarmMaxLevelLubr</ts>
+				<ts caption="Мин.уровень в аккумулирующем маслобаке">AlarmAllStop.AlarmMinLevelLubr</ts>
+			</ts_security>
+			<ts_other caption="Прочие защиты">
+				<ts caption="Отсутствие связи с МПСА НПС (ModBus)"> </ts>
+				<ts caption="Скребок СГП прошел">DPS_2.Scr</ts>
+				<ts caption="Скребок СГП принят">DPS_1.Scr</ts>
+				<ts caption="Система водотушения включена">FireSystem.WaterSystem_On</ts>
+				<ts caption="Нижний уровень в манифольде"> </ts>
+				<ts caption="Неисправность системы водотушения">FireSystem.WaterSystem_Neis</ts>
+				<ts caption="Неисправность насосов откачки утечек">Signal_NPS.AlarmPump</ts>
+				<ts caption="Неисправность ЗРУ">ZRU.Neis</ts>
+				<ts caption="Насос откачки утечек включен">PUMP.On</ts>
+				<ts caption="Минимальный уровень в емкости противопожарного запаса пенораствора и воды">FireSystem.MinLevel</ts>
+				<ts caption="Дизель-генератор включен">DGS.On</ts>
+				<ts caption="Вспомсистемы включены">VSYS.On</ts>
+				<ts caption="Верхний уровень в манифольде"> </ts>
+				<ts caption="Авария в ЗРУ">Signal_NPS.AlarmZRU</ts>
+				<ts caption="Положение вводных переключателей ввод 2">ZRU.VVOn2</ts>
+				<ts caption="Положение вводных переключателей ввод 1">ZRU.VVOn1</ts>
+				<ts caption="Исчезновение напряжения на шинах ввод 2">ZRU.AlarmUSH2</ts>
+				<ts caption="Исчезновение напряжения на шинах ввод 1">ZRU.AlarmUSH1</ts>		
 			</ts_other>
 		</object>
 	</to_object>
