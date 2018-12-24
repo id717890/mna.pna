@@ -28,27 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlMain = new System.Windows.Forms.TableLayoutPanel();
             this.lbMnaList = new System.Windows.Forms.ListBox();
             this.tlRight = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCreateProtocol = new System.Windows.Forms.Button();
+            this.nMnaNumber = new System.Windows.Forms.NumericUpDown();
+            this.lMnaNumber = new System.Windows.Forms.Label();
             this.nColumnCaption = new System.Windows.Forms.NumericUpDown();
             this.lColumnCaption = new System.Windows.Forms.Label();
             this.lColumnTag = new System.Windows.Forms.Label();
             this.nColumnTag = new System.Windows.Forms.NumericUpDown();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.dgParameters = new System.Windows.Forms.DataGridView();
-            this.lMnaNumber = new System.Windows.Forms.Label();
-            this.nMnaNumber = new System.Windows.Forms.NumericUpDown();
+            this.cbEnginer = new System.Windows.Forms.ComboBox();
+            this.lEnginer = new System.Windows.Forms.Label();
+            this.lOrder = new System.Windows.Forms.Label();
+            this.tbOrder = new System.Windows.Forms.TextBox();
             this.tlMain.SuspendLayout();
             this.tlRight.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nMnaNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnCaption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nMnaNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // tlMain
@@ -63,7 +68,7 @@
             this.tlMain.Name = "tlMain";
             this.tlMain.RowCount = 1;
             this.tlMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlMain.Size = new System.Drawing.Size(1265, 481);
+            this.tlMain.Size = new System.Drawing.Size(1410, 481);
             this.tlMain.TabIndex = 0;
             // 
             // lbMnaList
@@ -89,14 +94,19 @@
             this.tlRight.RowCount = 2;
             this.tlRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tlRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlRight.Size = new System.Drawing.Size(859, 475);
+            this.tlRight.Size = new System.Drawing.Size(1004, 475);
             this.tlRight.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tbOrder);
+            this.panel1.Controls.Add(this.cbEnginer);
+            this.panel1.Controls.Add(this.btnCreateProtocol);
             this.panel1.Controls.Add(this.nMnaNumber);
             this.panel1.Controls.Add(this.lMnaNumber);
             this.panel1.Controls.Add(this.nColumnCaption);
+            this.panel1.Controls.Add(this.lOrder);
+            this.panel1.Controls.Add(this.lEnginer);
             this.panel1.Controls.Add(this.lColumnCaption);
             this.panel1.Controls.Add(this.lColumnTag);
             this.panel1.Controls.Add(this.nColumnTag);
@@ -104,8 +114,46 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(853, 144);
+            this.panel1.Size = new System.Drawing.Size(998, 144);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCreateProtocol
+            // 
+            this.btnCreateProtocol.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCreateProtocol.Location = new System.Drawing.Point(735, 97);
+            this.btnCreateProtocol.Name = "btnCreateProtocol";
+            this.btnCreateProtocol.Size = new System.Drawing.Size(207, 31);
+            this.btnCreateProtocol.TabIndex = 7;
+            this.btnCreateProtocol.Text = "Сформирровать";
+            this.btnCreateProtocol.UseVisualStyleBackColor = true;
+            // 
+            // nMnaNumber
+            // 
+            this.nMnaNumber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nMnaNumber.Location = new System.Drawing.Point(198, 97);
+            this.nMnaNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nMnaNumber.Name = "nMnaNumber";
+            this.nMnaNumber.Size = new System.Drawing.Size(120, 31);
+            this.nMnaNumber.TabIndex = 6;
+            this.nMnaNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lMnaNumber
+            // 
+            this.lMnaNumber.AutoSize = true;
+            this.lMnaNumber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lMnaNumber.Location = new System.Drawing.Point(33, 105);
+            this.lMnaNumber.Name = "lMnaNumber";
+            this.lMnaNumber.Size = new System.Drawing.Size(154, 23);
+            this.lMnaNumber.TabIndex = 5;
+            this.lMnaNumber.Text = "Номер МНА/ПНА:";
             // 
             // nColumnCaption
             // 
@@ -169,64 +217,73 @@
             this.dgParameters.AllowUserToDeleteRows = false;
             this.dgParameters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgParameters.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgParameters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgParameters.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgParameters.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgParameters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgParameters.Location = new System.Drawing.Point(3, 153);
             this.dgParameters.Name = "dgParameters";
             this.dgParameters.ReadOnly = true;
             this.dgParameters.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgParameters.Size = new System.Drawing.Size(853, 359);
+            this.dgParameters.Size = new System.Drawing.Size(998, 359);
             this.dgParameters.TabIndex = 1;
             // 
-            // lMnaNumber
+            // cbEnginer
             // 
-            this.lMnaNumber.AutoSize = true;
-            this.lMnaNumber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lMnaNumber.Location = new System.Drawing.Point(33, 105);
-            this.lMnaNumber.Name = "lMnaNumber";
-            this.lMnaNumber.Size = new System.Drawing.Size(154, 23);
-            this.lMnaNumber.TabIndex = 5;
-            this.lMnaNumber.Text = "Номер МНА/ПНА:";
+            this.cbEnginer.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbEnginer.FormattingEnabled = true;
+            this.cbEnginer.Location = new System.Drawing.Point(735, 21);
+            this.cbEnginer.Name = "cbEnginer";
+            this.cbEnginer.Size = new System.Drawing.Size(207, 31);
+            this.cbEnginer.TabIndex = 8;
             // 
-            // nMnaNumber
+            // lEnginer
             // 
-            this.nMnaNumber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nMnaNumber.Location = new System.Drawing.Point(198, 97);
-            this.nMnaNumber.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nMnaNumber.Name = "nMnaNumber";
-            this.nMnaNumber.Size = new System.Drawing.Size(120, 31);
-            this.nMnaNumber.TabIndex = 6;
-            this.nMnaNumber.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.lEnginer.AutoSize = true;
+            this.lEnginer.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lEnginer.Location = new System.Drawing.Point(601, 24);
+            this.lEnginer.Name = "lEnginer";
+            this.lEnginer.Size = new System.Drawing.Size(133, 23);
+            this.lEnginer.TabIndex = 3;
+            this.lEnginer.Text = "Инженер СДКУ:";
+            // 
+            // lOrder
+            // 
+            this.lOrder.AutoSize = true;
+            this.lOrder.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lOrder.Location = new System.Drawing.Point(638, 64);
+            this.lOrder.Name = "lOrder";
+            this.lOrder.Size = new System.Drawing.Size(96, 23);
+            this.lOrder.TabIndex = 3;
+            this.lOrder.Text = "№ наряда:";
+            // 
+            // tbOrder
+            // 
+            this.tbOrder.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbOrder.Location = new System.Drawing.Point(735, 58);
+            this.tbOrder.Name = "tbOrder";
+            this.tbOrder.Size = new System.Drawing.Size(207, 31);
+            this.tbOrder.TabIndex = 9;
             // 
             // MNA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 481);
+            this.ClientSize = new System.Drawing.Size(1410, 481);
             this.Controls.Add(this.tlMain);
             this.Name = "MNA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -234,10 +291,10 @@
             this.tlRight.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nMnaNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnCaption)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nColumnTag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgParameters)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nMnaNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -255,6 +312,11 @@
         private System.Windows.Forms.NumericUpDown nColumnTag;
         private System.Windows.Forms.NumericUpDown nMnaNumber;
         private System.Windows.Forms.Label lMnaNumber;
+        private System.Windows.Forms.Button btnCreateProtocol;
+        private System.Windows.Forms.TextBox tbOrder;
+        private System.Windows.Forms.ComboBox cbEnginer;
+        private System.Windows.Forms.Label lOrder;
+        private System.Windows.Forms.Label lEnginer;
     }
 }
 

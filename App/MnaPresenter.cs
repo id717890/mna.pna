@@ -9,18 +9,23 @@ using App.Interface.View;
 using App.Interface.Model;
 using App.Models;
 using OfficeOpenXml;
+using System.Reflection;
+using System.Windows.Forms;
+using System.Configuration;
+using System.Drawing;
 
 namespace App
 {
     public class MnaPresenterNew : IMnaPresenter, IMnaPresenterCallback
     {
         const string CfgFile = "\\configs\\mna_service.xml";
+        const string TemplateName = "App.Resources.protocol.xltx";
+        const string ReportsFolder = "Reports";
+        const string ReportMnaPnaName = "Проверка систем телемеханики магистральных агрегатов";
 
         private readonly IMnaView _view;
         private IMnaViewModel _model;
-
         private static bool _isInit = false;
-
 
         public MnaPresenterNew(IMnaView view, IMnaViewModel model)
         {
@@ -37,13 +42,9 @@ namespace App
         {
             ReadConfig();
             _view.Attach(this);
+            InitViewForm();
 
-        }
-
-        public void OnMnaChenged(Mna mna)
-        {
-            SetCurrentMna(mna);
-        }
+        }        
 
         private void FindTagInList(IEnumerable<App.Data.ExcelColumn> excel, IEnumerable<Tag> tags, int mnaNumber = -1)
         {
@@ -119,50 +120,7 @@ namespace App
             {
                 return null;
             }
-        }
-
-        public void OnOpenExcelFile(string fileName)
-        {
-            ResetStatusCurrentMna();
-            using (var excel = new ExcelPackage(new FileInfo(fileName)))
-            {
-                ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
-                List<Tag> allTags = new List<Tag>();
-                if (_model.CurrentMna.TsSecurity != null && _model.CurrentMna.TsSecurity.Any()) allTags.AddRange(_model.CurrentMna.TsSecurity);
-                if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any()) allTags.AddRange(_model.CurrentMna.TsOther);
-                if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
-                //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
-
-                List<App.Data.ExcelColumn> excelRows = new List<App.Data.ExcelColumn>();
-                for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                {
-                    excelRows.Add(new App.Data.ExcelColumn
-                    {
-                        Caption = sheet.Cells[rowNum, _view.ColumnCaption].Text,
-                        Tag = sheet.Cells[rowNum, _view.ColumnTag].Text,
-                    });
-                }
-                if (excelRows.Any())
-                {
-                    if (_model.CurrentMna.TagWithNumber) FindTagInList(excelRows, allTags, _view.MnaNumber);
-                    else FindTagInList(excelRows, allTags);
-                }
-
-
-
-                //for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                //{
-                //    Tag findTag = _model.CurrentMna.TagWithNumber
-                //        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
-                //        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
-                //    if (findTag != null)
-                //    {
-                //        findTag.Status = "OK";
-                //    }
-                //}
-            }
-            _view.RenderParametersGrid();
-        }
+        }        
 
         public void ReadConfig()
         {
@@ -362,5 +320,153 @@ namespace App
                     }
             }
         }
+
+        public void InitViewForm()
+        {
+            try
+            {
+                var enginersSettings = ConfigurationSettings.AppSettings.Get("enginers");
+                _view.Enginers = enginersSettings.Split(';');
+            } catch { }
+        }
+
+        #region Callback view events
+        public void OnMnaChenged(Mna mna)
+        {
+            SetCurrentMna(mna);
+        }
+
+        public void OnOpenExcelFile(string fileName)
+        {
+            ResetStatusCurrentMna();
+            using (var excel = new ExcelPackage(new FileInfo(fileName)))
+            {
+                ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
+                List<Tag> allTags = new List<Tag>();
+                if (_model.CurrentMna.TsSecurity != null && _model.CurrentMna.TsSecurity.Any()) allTags.AddRange(_model.CurrentMna.TsSecurity);
+                if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any()) allTags.AddRange(_model.CurrentMna.TsOther);
+                if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
+                //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
+
+                List<App.Data.ExcelColumn> excelRows = new List<App.Data.ExcelColumn>();
+                for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
+                {
+                    excelRows.Add(new App.Data.ExcelColumn
+                    {
+                        Caption = sheet.Cells[rowNum, _view.ColumnCaption].Text,
+                        Tag = sheet.Cells[rowNum, _view.ColumnTag].Text,
+                    });
+                }
+                if (excelRows.Any())
+                {
+                    if (_model.CurrentMna.TagWithNumber) FindTagInList(excelRows, allTags, _view.MnaNumber);
+                    else FindTagInList(excelRows, allTags);
+                }
+
+
+
+                //for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
+                //{
+                //    Tag findTag = _model.CurrentMna.TagWithNumber
+                //        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
+                //        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
+                //    if (findTag != null)
+                //    {
+                //        findTag.Status = "OK";
+                //    }
+                //}
+            }
+            _view.RenderParametersGrid();
+        }
+
+        public void OnCreateProtocolMnaPna()
+        {
+            int tempRow = 15;
+            int currentRow = 15;
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(TemplateName);
+            ExcelPackage pck = new ExcelPackage(stream);
+            var ws = pck.Workbook.Worksheets[1];
+
+            ws.Cells[6, 2].Value = "Дата: " + DateTime.Now.ToString("dd.MM.yyyy");
+            ws.Cells[8, 2].Value = "№ наряд-допуска: " + _view.Order;
+            ws.Cells[10, 3].Value = _view.Enginer;
+
+            ws.InsertRow(tempRow + 1, _model.CurrentMna.TsSecurity.Count());
+            currentRow = tempRow + 1;
+            var count = 1;
+            foreach (var ts in _model.CurrentMna.TsSecurity)
+            {
+                ws.Cells[tempRow, 1, tempRow, 3].Copy(ws.Cells[currentRow, 1, currentRow, 3]);
+                ws.Cells[currentRow, 1].Value = count;
+                ws.Cells[currentRow, 2].Value = string.Format(ts.Caption, _view.MnaNumber);
+                ws.Cells[currentRow, 3].Value = ts.Status;
+                if (ts.Status == Status.NotFound)
+                {
+                    ws.Cells[currentRow, 3].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    ws.Cells[currentRow, 3].Style.Fill.BackgroundColor.SetColor(Color.Red);
+                }
+                count += 1;
+                currentRow += 1;
+            }
+            ws.DeleteRow(tempRow);
+            currentRow -= 1;
+
+            tempRow = currentRow + 1;
+            currentRow = tempRow;
+            ws.InsertRow(tempRow + 1, _model.CurrentMna.TsOther.Count());
+            currentRow = tempRow + 1;
+            count = 1;
+            foreach (var ts in _model.CurrentMna.TsOther)
+            {
+                ws.Cells[tempRow, 1, tempRow, 3].Copy(ws.Cells[currentRow, 1, currentRow, 3]);
+                ws.Cells[currentRow, 1].Value = count;
+                ws.Cells[currentRow, 2].Value = string.Format(ts.Caption, _view.MnaNumber);
+                ws.Cells[currentRow, 3].Value = ts.Status;
+                if (ts.Status == Status.NotFound)
+                {
+                    ws.Cells[currentRow, 3].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    ws.Cells[currentRow, 3].Style.Fill.BackgroundColor.SetColor(Color.Red);
+                }
+                count += 1;
+                currentRow += 1;
+            }
+            ws.DeleteRow(tempRow);
+            currentRow -= 1;
+
+            tempRow = currentRow + 1;
+            currentRow = tempRow;
+            ws.InsertRow(tempRow + 1, _model.CurrentMna.Tu.Count());
+            currentRow = tempRow + 1;
+            count = 1;
+            foreach (var ts in _model.CurrentMna.Tu)
+            {
+                ws.Cells[tempRow, 1, tempRow, 3].Copy(ws.Cells[currentRow, 1, currentRow, 3]);
+                ws.Cells[currentRow, 1].Value = count;
+                ws.Cells[currentRow, 2].Value = string.Format(ts.Caption, _view.MnaNumber);
+                ws.Cells[currentRow, 3].Value = ts.Status;
+                if (ts.Status == Status.NotFound)
+                {
+                    ws.Cells[currentRow, 3].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    ws.Cells[currentRow, 3].Style.Fill.BackgroundColor.SetColor(Color.Red);
+                }
+                count += 1;
+                currentRow += 1;
+            }
+            ws.DeleteRow(tempRow);
+            currentRow -= 1;
+
+            //for (var i = row + 1; i<=row + _model.CurrentMna.TsSecurity.Count() -1; i++)
+            //{
+            //    ws.Cells[row, 1, row, 8].Copy(ws.Cells[i, 1, i, 8]);
+            //}
+
+            //ws.Cells[1, 1,5, 5].Copy
+            var fileName = Application.StartupPath + "\\" + ReportsFolder + "\\" + ReportMnaPnaName + " " + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xlsx";
+
+            if (!Directory.Exists(Application.StartupPath + "\\"+ ReportsFolder)) Directory.CreateDirectory(Application.StartupPath + "\\" + ReportsFolder);
+            pck.SaveAs(new FileInfo(fileName));
+            System.Diagnostics.Process.Start(fileName);
+        }
+        #endregion
     }
 }

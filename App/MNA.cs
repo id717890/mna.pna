@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using App.Interface.View;
 using App.Interface.Presenter;
 using App.Interface.Model;
+using System.IO;
+using System.Reflection;
+using OfficeOpenXml;
 
 namespace App
 {
@@ -24,6 +27,10 @@ namespace App
                 {
                     callback.OnOpenExcelFile(fileName);
                 }
+            };
+            btnCreateProtocol.Click += (sender, e) =>
+            {
+                callback.OnCreateProtocolMnaPna();
             };
         }
 
@@ -49,6 +56,24 @@ namespace App
         {
             get => (Int32)nColumnTag.Value;
             set => nColumnTag.Value = value;
+        }
+
+        public string Enginer {
+            get => cbEnginer.Text;
+            set => cbEnginer.Text = value;
+        }
+
+        public string Order {
+            get => tbOrder.Text;
+            set => tbOrder.Text = value;
+        }
+
+        public string[] Enginers 
+{
+            set {
+                cbEnginer.Items.Clear();
+                cbEnginer.Items.AddRange(value);
+            }
         }
 
         public void SetModel(IMnaViewModel model)
@@ -197,6 +222,6 @@ namespace App
                 MessageBox.Show(@"Столбцы для чтения файла не должны быть одинаковыми", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return false;
-        }
+        }        
     }
 }
