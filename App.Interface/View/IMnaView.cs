@@ -10,6 +10,9 @@ namespace App.Interface.View
         Int32 ColumnTag { get; set; }
         Int32 MnaNumber { get; set; }
         Boolean IsMnaNumber { get; set; }
+        string[] Enginers { set; }
+        string Enginer { get; set; }
+        string Order { get; set; }
 
         void SetModel(IMnaViewModel model);
         void RenderParametersGrid();
