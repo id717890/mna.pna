@@ -55,15 +55,25 @@ namespace App
                     if (tag.Checkable)
                     {
                         int count = 0;
-                        if (mnaNumber != -1)
+                        if (mnaNumber != -1 && !string.IsNullOrEmpty(tag.Text))
                             count = excel.ToList().Count(
                                 x => x.Tag.ToLower() == string.Format(tag.FullName, mnaNumber).ToLower() 
-                                && x.Caption.ToLower().Contains(tag.Caption.ToLower())
+                                && x.Caption.ToLower().Contains(tag.Text.ToLower())
+                                && !x.Caption.ToLower().Contains("снят"));
+                        else if (mnaNumber != -1 && string.IsNullOrEmpty(tag.Text))
+                            count = excel.ToList().Count(
+                                x => x.Tag.ToLower() == string.Format(tag.FullName, mnaNumber).ToLower()
+                                && x.Caption.ToLower().Contains(string.Format(tag.Caption, mnaNumber.ToString()).ToLower())
+                                && !x.Caption.ToLower().Contains("снят"));
+                        else if (mnaNumber == -1 && !string.IsNullOrEmpty(tag.Text))
+                            count = excel.ToList().Count(
+                                x => x.Tag.ToLower() == tag.FullName.ToLower()
+                                && x.Caption.ToLower().Contains(tag.Text.ToLower())
                                 && !x.Caption.ToLower().Contains("снят"));
                         else
                             count = excel.ToList().Count(
                                 x => x.Tag.ToLower() == tag.FullName.ToLower() 
-                                && x.Caption.ToLower().Contains(tag.Caption.ToLower())
+                                && x.Caption.ToLower().Contains(string.Format(tag.Caption, mnaNumber.ToString()).ToLower())
                                 && !x.Caption.ToLower().Contains("снят"));
 
                         if (count == 1)
