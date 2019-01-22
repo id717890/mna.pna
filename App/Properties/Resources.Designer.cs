@@ -63,9 +63,19 @@ namespace App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] protocol {
+        internal static byte[] ProtocolMna {
             get {
-                object obj = ResourceManager.GetObject("protocol", resourceCulture);
+                object obj = ResourceManager.GetObject("ProtocolMna", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ProtocolStation {
+            get {
+                object obj = ResourceManager.GetObject("ProtocolStation", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -100,7 +100,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Resources\protocol.xltx" />
+    <EmbeddedResource Include="Resources\ProtocolMna.xltx" />
+    <EmbeddedResource Include="Resources\ProtocolStation.xltx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

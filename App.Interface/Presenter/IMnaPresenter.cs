@@ -8,5 +8,7 @@ namespace App.Interface.Presenter
         void ReadConfig();
         void SetCurrentMna(Mna mna);
         void ResetStatusCurrentMna();
+        void OnCreateProtocolStation();
+        void OnCreateProtocolMnaPna();
     }
 }

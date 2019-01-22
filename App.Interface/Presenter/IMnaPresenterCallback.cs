@@ -6,6 +6,6 @@ namespace App.Interface.Presenter
     {
         void OnMnaChenged(Mna mna);
         void OnOpenExcelFile(string fileName);
-        void OnCreateProtocolMnaPna();
+        void OnCreateProtocol();
     }
 }

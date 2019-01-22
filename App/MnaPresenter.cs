@@ -19,9 +19,11 @@ namespace App
     public class MnaPresenterNew : IMnaPresenter, IMnaPresenterCallback
     {
         const string CfgFile = "\\configs\\mna_service.xml";
-        const string TemplateName = "App.Resources.protocol.xltx";
+        const string TemplateNameForMna = "App.Resources.ProtocolMna.xltx";
+        const string TemplateNameForStation = "App.Resources.ProtocolStation.xltx";
         const string ReportsFolder = "Reports";
         const string ReportMnaPnaName = "Проверка систем телемеханики магистральных агрегатов";
+        const string ReportStationName = "Проверка систем телемеханики общестанционных защит";
 
         private readonly IMnaView _view;
         private IMnaViewModel _model;
@@ -340,63 +342,15 @@ namespace App
             } catch { }
         }
 
-        #region Callback view events
-        public void OnMnaChenged(Mna mna)
-        {
-            SetCurrentMna(mna);
-        }
-
-        public void OnOpenExcelFile(string fileName)
-        {
-            ResetStatusCurrentMna();
-            using (var excel = new ExcelPackage(new FileInfo(fileName)))
-            {
-                ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
-                List<Tag> allTags = new List<Tag>();
-                if (_model.CurrentMna.TsSecurity != null && _model.CurrentMna.TsSecurity.Any()) allTags.AddRange(_model.CurrentMna.TsSecurity);
-                if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any()) allTags.AddRange(_model.CurrentMna.TsOther);
-                if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
-                //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
-
-                List<App.Data.ExcelColumn> excelRows = new List<App.Data.ExcelColumn>();
-                for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                {
-                    excelRows.Add(new App.Data.ExcelColumn
-                    {
-                        Caption = sheet.Cells[rowNum, _view.ColumnCaption].Text,
-                        Tag = sheet.Cells[rowNum, _view.ColumnTag].Text,
-                    });
-                }
-                if (excelRows.Any())
-                {
-                    if (_model.CurrentMna.TagWithNumber) FindTagInList(excelRows, allTags, _view.MnaNumber);
-                    else FindTagInList(excelRows, allTags);
-                }
-
-
-
-                //for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
-                //{
-                //    Tag findTag = _model.CurrentMna.TagWithNumber
-                //        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
-                //        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
-                //    if (findTag != null)
-                //    {
-                //        findTag.Status = "OK";
-                //    }
-                //}
-            }
-            _view.RenderParametersGrid();
-        }
-
         public void OnCreateProtocolMnaPna()
         {
             int tempRow = 15;
             int currentRow = 15;
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(TemplateName);
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(TemplateNameForMna);
             ExcelPackage pck = new ExcelPackage(stream);
             var ws = pck.Workbook.Worksheets[1];
 
+            ws.Cells[3, 1].Value = _model.CurrentMna.Caption;
             ws.Cells[6, 2].Value = "Дата: " + DateTime.Now.ToString("dd.MM.yyyy");
             ws.Cells[8, 2].Value = "№ наряд-допуска: " + _view.Order;
             ws.Cells[10, 3].Value = _view.Enginer;
@@ -473,9 +427,135 @@ namespace App
             //ws.Cells[1, 1,5, 5].Copy
             var fileName = Application.StartupPath + "\\" + ReportsFolder + "\\" + ReportMnaPnaName + " " + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xlsx";
 
-            if (!Directory.Exists(Application.StartupPath + "\\"+ ReportsFolder)) Directory.CreateDirectory(Application.StartupPath + "\\" + ReportsFolder);
+            if (!Directory.Exists(Application.StartupPath + "\\" + ReportsFolder)) Directory.CreateDirectory(Application.StartupPath + "\\" + ReportsFolder);
             pck.SaveAs(new FileInfo(fileName));
             System.Diagnostics.Process.Start(fileName);
+        }
+
+        public void OnCreateProtocolStation()
+        {
+            int tempRow = 15;
+            int currentRow = 15;
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(TemplateNameForStation);
+            ExcelPackage pck = new ExcelPackage(stream);
+            var ws = pck.Workbook.Worksheets[1];
+
+            ws.Cells[3, 1].Value = _model.CurrentMna.Caption;
+            ws.Cells[6, 2].Value = "Дата: " + DateTime.Now.ToString("dd.MM.yyyy");
+            ws.Cells[8, 2].Value = "№ наряд-допуска: " + _view.Order;
+            ws.Cells[11, 3].Value = _view.Enginer;
+
+            ws.InsertRow(tempRow + 1, _model.CurrentMna.TsSecurity.Count());
+            currentRow = tempRow + 1;
+            var count = 1;
+            foreach (var ts in _model.CurrentMna.TsSecurity)
+            {
+                ws.Cells[tempRow, 1, tempRow, 3].Copy(ws.Cells[currentRow, 1, currentRow, 3]);
+                ws.Cells[currentRow, 1].Value = count;
+                ws.Cells[currentRow, 2].Value = string.Format(ts.Caption, _view.MnaNumber);
+                ws.Cells[currentRow, 3].Value = ts.Status;
+                if (ts.Status == Status.NotFound || string.IsNullOrEmpty(ts.Status))
+                {
+                    ws.Cells[currentRow, 3].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    ws.Cells[currentRow, 3].Style.Fill.BackgroundColor.SetColor(Color.Red);
+                }
+                count += 1;
+                currentRow += 1;
+            }
+            ws.DeleteRow(tempRow);
+            currentRow -= 1;
+
+            tempRow = currentRow + 1;
+            currentRow = tempRow;
+            ws.InsertRow(tempRow + 1, _model.CurrentMna.TsOther.Count());
+            currentRow = tempRow + 1;
+            count = 1;
+            foreach (var ts in _model.CurrentMna.TsOther)
+            {
+                ws.Cells[tempRow, 1, tempRow, 3].Copy(ws.Cells[currentRow, 1, currentRow, 3]);
+                ws.Cells[currentRow, 1].Value = count;
+                ws.Cells[currentRow, 2].Value = string.Format(ts.Caption, _view.MnaNumber);
+                if (ts.Status == Status.NotFound || string.IsNullOrEmpty(ts.Status))
+                {
+                    ws.Cells[currentRow, 3].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    ws.Cells[currentRow, 3].Style.Fill.BackgroundColor.SetColor(Color.Red);
+                }
+                count += 1;
+                currentRow += 1;
+            }
+            ws.DeleteRow(tempRow);
+            currentRow -= 1;
+
+            var fileName = Application.StartupPath + "\\" + ReportsFolder + "\\" + ReportStationName + " " + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".xlsx";
+
+            if (!Directory.Exists(Application.StartupPath + "\\" + ReportsFolder)) Directory.CreateDirectory(Application.StartupPath + "\\" + ReportsFolder);
+            pck.SaveAs(new FileInfo(fileName));
+            System.Diagnostics.Process.Start(fileName);
+        }
+
+        #region Callback view events
+        public void OnMnaChenged(Mna mna)
+        {
+            SetCurrentMna(mna);
+        }
+
+        public void OnOpenExcelFile(string fileName)
+        {
+            ResetStatusCurrentMna();
+            using (var excel = new ExcelPackage(new FileInfo(fileName)))
+            {
+                ExcelWorksheet sheet = excel.Workbook.Worksheets.First();
+                List<Tag> allTags = new List<Tag>();
+                if (_model.CurrentMna.TsSecurity != null && _model.CurrentMna.TsSecurity.Any()) allTags.AddRange(_model.CurrentMna.TsSecurity);
+                if (_model.CurrentMna.TsOther != null && _model.CurrentMna.TsOther.Any()) allTags.AddRange(_model.CurrentMna.TsOther);
+                if (_model.CurrentMna.Tu != null && _model.CurrentMna.Tu.Any()) allTags.AddRange(_model.CurrentMna.Tu);
+                //var allTags = _model.CurrentMna.TsSecurity.ToList().Concat(_model.CurrentMna.TsOther).Concat(_model.CurrentMna.Tu);
+
+                List<App.Data.ExcelColumn> excelRows = new List<App.Data.ExcelColumn>();
+                for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
+                {
+                    excelRows.Add(new App.Data.ExcelColumn
+                    {
+                        Caption = sheet.Cells[rowNum, _view.ColumnCaption].Text,
+                        Tag = sheet.Cells[rowNum, _view.ColumnTag].Text,
+                    });
+                }
+                if (excelRows.Any())
+                {
+                    if (_model.CurrentMna.TagWithNumber) FindTagInList(excelRows, allTags, _view.MnaNumber);
+                    else FindTagInList(excelRows, allTags);
+                }
+
+
+
+                //for (var rowNum = 2; rowNum <= sheet.Dimension.End.Row; rowNum++)
+                //{
+                //    Tag findTag = _model.CurrentMna.TagWithNumber
+                //        ? FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags, _view.MnaNumber.ToString())
+                //        : FindTagInList(sheet.Cells[rowNum, _view.ColumnTag].Text, allTags);
+                //    if (findTag != null)
+                //    {
+                //        findTag.Status = "OK";
+                //    }
+                //}
+            }
+            _view.RenderParametersGrid();
+        }
+
+        public void OnCreateProtocol()
+        {
+            if (_model.CurrentMna !=null)
+            {
+                switch (_model.CurrentMna.TagWithNumber)
+                {
+                    case true:
+                        OnCreateProtocolMnaPna();
+                        break;
+                    case false:
+                        OnCreateProtocolStation();
+                        break;
+                }
+            }
         }
         #endregion
     }

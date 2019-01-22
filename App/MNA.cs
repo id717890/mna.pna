@@ -30,7 +30,7 @@ namespace App
             };
             btnCreateProtocol.Click += (sender, e) =>
             {
-                callback.OnCreateProtocolMnaPna();
+                callback.OnCreateProtocol();
             };
         }
 
@@ -120,14 +120,14 @@ namespace App
                 {
                     dgParameters.Rows.Clear();
                     Int16 rowNum = 1;
-
+                    Int16 count = 1;
                     if (selectedMna.TsSecurity !=null && selectedMna.TsSecurity.Any())
                     {
                         dgParameters.Rows.Add(String.Empty, selectedMna.TsSecurityCaption);
                         dgParameters.Rows[rowNum - 1].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                         foreach (Tag tag in selectedMna.TsSecurity)
                         {
-                            dgParameters.Rows.Add(rowNum, string.Format(tag.Caption, MnaNumber), tag.Status);
+                            dgParameters.Rows.Add(count, string.Format(tag.Caption, MnaNumber), tag.Status);
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
@@ -139,6 +139,7 @@ namespace App
                                 dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Silver;
                             }
                             rowNum++;
+                            count++;
                         }
                     }
 
@@ -150,9 +151,10 @@ namespace App
                         dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                         rowNum++;
 
+                        count = 1;
                         foreach (Tag tag in selectedMna.TsOther)
                         {
-                            dgParameters.Rows.Add(rowNum, string.Format(tag.Caption, MnaNumber), tag.Status);
+                            dgParameters.Rows.Add(count, string.Format(tag.Caption, MnaNumber), tag.Status);
                             if (tag.Status == Status.Ok) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Green;
                             else if (tag.Status == Status.NotFound) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.Red;
                             else if (tag.Status == Status.NotSingleResult) dgParameters.Rows[rowNum].Cells[2].Style.BackColor = Color.LightGreen;
@@ -165,6 +167,7 @@ namespace App
                             }
 
                             rowNum++;
+                            count++;
                         }
                     }
 
@@ -177,6 +180,7 @@ namespace App
                         dgParameters.Rows[rowNum].Cells[1].Style.Font = new Font("Arial", 14, FontStyle.Bold);
                         rowNum++;
 
+                        count = 1;
                         foreach (Tag tag in selectedMna.Tu)
                         {
                             dgParameters.Rows.Add(rowNum, string.Format(tag.Caption, MnaNumber), tag.Status);
@@ -192,6 +196,7 @@ namespace App
                             }
 
                             rowNum++;
+                            count++;
                         }
                     }
                 
